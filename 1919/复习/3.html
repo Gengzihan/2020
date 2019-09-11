@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    冒泡  一轮一轮的比较  每轮都是前后两项比较  把大的放到后边  小的放在前边
+    快速  每次函数执行  都是把一个数组分成左右两部分  左边的比选中项小  右边比选中项大
+    0-100  能被3或5整除的整数之和
+
+
+     */
+    function sum(n) {
+        //边界
+        if (n <= 0) {
+            return 0;
+        }
+        if (n % 3 == 0 || n % 5 == 0) {
+            return n + sum(n - 1)
+        } else {
+            return sum(n - 1)
+        }
+    }
+    console.log(sum(10));
+
+    //
+    function quickSort(arr) {
+        //边界
+        if (arr.length <= 1) {
+            return arr;
+        }
+        var n = parseInt(arr.length / 2);
+        var temp = arr.splice(n, 1)[0];
+        var left = [], right = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] <= temp) {
+                left.push(arr[i])
+            } else {
+                right.push(arr[i])
+            }
+        }
+        return quickSort(left).concat(temp.quickSort(right))
+    }
+    var ary = [{ age: 1 }, { age: 10 }, { age: 30 }, { age: 6 },];
+    //按照 每一项中age 的属性值排序
+    ary.sort((a, b) => {
+        console.log(a, b)
+        return a.age - b.age
+    })
+    console.log(ary)
+
+    //获取 [n,m]之间的随机整数
+    //Math.round(Math.random()*(m-n)+n)
+    //
+    //验证码的思路
+    //从大字符串中  挑出  几个字符串拼接到一块
+    //怎么挑出的  是随机获取一个数字，然后把数字当做字符串的索引  获取对应的字符
+    //然后把得到的字符展示到页面上 
+    function f() {
+        var str = '';
+        var S = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+        // [0-61]之间
+        while (str.length < 4) {
+            var n = Math.round(Math.random() * 61);
+            str.indexOf(S[n]) == -1 ? str += S[n] :null;
+        }
+        return str;
+    }
+</script>

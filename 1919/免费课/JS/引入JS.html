@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //btn2 is not defined :  原因  就是 因为先执行的JS版本   这时 还有对应的DOM结构
+        /* 
+              
+    btn2.onclick=function(){
+        alert(6666)
+    }
+     */
+        // window.onload = function () {
+        //     //DOM加载完成后 之后执行的代码
+        //     btn2.onclick = function () {
+        //         alert(6666)
+        //     }
+        // }
+
+
+    </script>
+</head>
+
+<body>
+    <button onclick="alert(11)">按钮</button>
+    <button id="btn2">按钮2</button>
+
+</body>
+
+</html>
+
+<script>
+    //JS的内容 或者 外链   标签位置没有明确 限制时
+    //若script   标签身上有 src  内部包含的代码就不再执行了
+    
+    
+</script>

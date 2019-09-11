@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="btns"></div>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+</body>
+
+</html>
+<script>
+    /* 
+    this  是函数中的另一个关键字  指的是 函数的执行主体
+    具体函数中this  指的是谁  我们现在记住  事件绑定函数中的this  是指的当前  这个元素
+    */
+    //给这六个按钮  循环绑定事件；
+    //使用  for  循环怎么实现？
+    var btns = document.getElementsByTagName('button');
+    console.log(btns)
+    for (var i = 0; i > btns.length; i++) {
+        //btns[i] 每一个 button
+        btns[i]
+        console.log(btns[i])
+        btns[i].myIndex = i;//把 i 赋给当前元素的myIndex属性
+        btns[i].onclick = function () {
+            //通过this.myIndex  我们可以知道当前点击的这个元素的牵引
+            //因为在for循环时  我们把对应的索引储到了 myIndex 这个属性上
+            console.dir(this);
+            alert(this.myIndex + 1)
+        }
+    }
+</script>

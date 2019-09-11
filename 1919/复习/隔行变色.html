@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li {
+            width: 500px;
+            height: 50px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>
+<script>
+    // 第一种方式
+    // 设置一个变量  用来储存操作的某行的原来的颜色
+    // 鼠标进入某行的时候   给  col  赋值一个当前行的颜色
+
+    // 第一步   要获取操作的DOM元素
+    var oLis = document.querySelectorAll('li');
+    var col = '';
+    //第二步  实现隔行变色  每一行要设置一个颜色
+    for (var i = 0; i < oLis.length; i++) {
+        // oLis[i]  代表每一个li
+        oLis[i].style.background = i % 2 ? 'blue' : 'red';
+        oLis[i].onmouseenter = function () {
+            //鼠标进入变色
+            //this  代表的是当前操作的元素
+            col = this.style.background;
+            debugger;
+            this.style.background = 'gold';
+        }
+        oLis[i].onmouseleave = function () {
+            //鼠标离开
+            //让颜色恢复
+            this.style.background = col;
+        }
+    }
+
+
+
+    // //第二种方式  利用元素自身去存储 之前的背景色
+    // var oLis = document.querySelectorAll('li');
+    // var col = '';
+    // for (var i = 0; i < oLis.length; i++) {
+    //     var bg = i % 2 ? 'blue' : 'red'
+    //     // oLis[i].myBg = bg;
+    //     oLis[i].myBg = oLis[i].style.background = bg; //连等
+    //     oLis[i].myIndex = i;
+    //     oLis[i].onmouseenter = function () {
+    //         this.style.background = 'gold';
+    //     }
+    //     oLis[i].onmouseleave = function () {
+    //         this.style.background = this.myBg
+    //     }
+
+    // }
+    // //点击某一行  弹出 这是xx行  背景色  是xxx
+    // oLis[i].onclick = function () {
+    //     alert(`这是第${this.mtIndex + 1}行  背景色 ${this.myBg}`)
+    // }
+
+
+
+
+
+</script>

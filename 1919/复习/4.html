@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function fn() {
+
+    }
+    //若是把函数作为值的情况，函数名都是没用的。
+    //匿名函数  就是那些没有名字的函数
+    //回调函数  就是指被其他函数调用的那些函数  ary.sort()
+    var f = function qqq() {
+        console.log(666)
+    }
+    f();
+    // qqq();
+
+    var f2 = () => {
+        //arguments   this  想和两个关键字  都被箭头函数当作普通变量对待了
+        //箭头函数    他没有arguments 实参集合，不定项求和 for循环   length
+        //   this 
+        console.log(arguments)
+    }
+    fn();
+    var f3 = (a, b) => a + b
+    var f3 = (a, b) => { return a + b }
+    var f4 = (a) => (b) => a + b;
+    f4 = (a) => {
+        return (b) => {
+            return a + b
+        }
+    }
+    f4 = function (a) {
+        return function (b) {
+            return a + b;
+        }
+    }
+    f4(1)(3)
+    console.log(f4)
+</script>

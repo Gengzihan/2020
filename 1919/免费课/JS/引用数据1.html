@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="inp">
+    <button id="btn">按钮</button>
+    <div class="box">
+        <h2>
+            我是 <span id="name1">xxx</span>
+        </h2>
+    </div>
+</body>
+
+</html>
+<script>
+    //innerHTML  是给对应元素设置内容的  他是元素天生自带的一个属性
+    /* 
+    字符串有length   这个属性  表示 字符串的长度 若想获取字符串某个字符  我们可以通过对应的索引去获取
+
+    数字 number  整数  小数  NaN
+    number()   规则(字符串)  从左到右  只要有非数字   结果就是NaN   若是其它数据类型   例如  数组  对象 函数  都会先转成字符串  （tostring）
+
+    Number('')   Number([])    Number(null)  Number(false)   结果都是 0 
+
+    parseInt()  从左到右查看  只要看到非数字  即停止转化  若第一个就是非数字  结果就是NaN
+    parsefloat()   规则如同上    只是碰到小数点不会停止转化
+
+    能出现NaN  强制转化失败   四则运算失败
+    + - * / % 的运算规则， 把符号两边 的内容先用  Number 转成数字  再去进行 运算
+
+    凡是与NaN 做运算的结果都是  NaN
+     */
+    var str = `你
+    好`;
+    btn.onclick = function () {
+        //获取文本框的内容
+        var val = inp.value;
+
+        //把文本框的内容  放到  span 中;
+        console.log(val)
+        name1.innerHTML = val;
+
+        //使用  i  标签 把 val  抱起来   也就是给innerHTML  赋予的值应该是  <i>val</i>
+        //name1.innerHTML='<i>'+val+'</i>';
+        name1.innerHTML = `<i>${val}</i>`;
+
+    }
+    //isNaN('12q')true  isNaN  的运算过程   先把实参用 Number 转化一下  结果再给  isNaN  使用
+    /* 
+    NaN  与谁都不是相等的
+     
+     需求   自已写一个类似于  isNaN 的方法   方法名  myIsNaN
+     */
+    var res = 1 + 3 - '12p' + 10 + '5' + undefined;//NaN5underfined;
+    var nun = Number(n);//把其他数据类型转成   number
+    if (num + '' === 'NaN') {
+        //把他弹出来的数字  转化成 字符串  然后再去跟  'NaN'作比较
+        return true
+        // }else{
+        //     return false
+        // }
+        return false;//为什么不写else  直接写return   因为  函数  只要碰见  return  就不再往下执行代码
+    }
+
+    /*
+    布尔类型  true  false
+    Boolean()    0  NaN  数字    null  undefined  只有这五个值转成布尔是  false   其他的都是true
+
+    !1==> 先转布尔  再去取反
+
+    1=='1'  //相对等
+    1 ！='1'  //相对不等
+
+    1==='1' //绝对等
+    1！=='1' //绝对不等
+    */
+    /* 
+    null  空指针  通过ID获取元素时见过
+    undefined   未定义   一个对象没有对应的属性   一个函数执行  不写return （或是写了return，但是后边没东西）  那么函数 的执行结果就是undefined
+
+    形参未取值时的默认值 时  是undefined
+     */
+</script>

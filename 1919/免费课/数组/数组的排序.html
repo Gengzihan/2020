@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+        数组排序
+
+     */
+    var ary = [1, 2, 3, 4, 3, 21, 45, , 4, 32, 56, 5, 76, 4, 32, 1, 5, 56, 46, 12, 96]
+    //  ary.sort((a,b)=>a-b); //(a,b)=>{return a-b}
+    //  console.log(ary)
+
+    //冒泡排序   双for
+    //两两比较   把大的数放在后边
+    //第一轮  把大的放在了后边、
+    //第二轮   把倒数的第二大放到了倒数的第二的位置
+    //以此类推
+    function mySort(arr) {
+        for (var i = 0; i < arr.length; i++) {
+            //确定轮数
+            for (var j = 0; j < arr.length - 1 - i; j++) {
+                // arr[j]  当前项
+                // arr[j+1]  后一项
+                // -i 是减少一半不必要的循环
+                if (arr[j] > arr[j + 1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+    var res = mySort(ary);
+    console.log(res, ary)
+</script>

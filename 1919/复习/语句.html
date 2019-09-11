@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 800px;
+            height: 200px;
+            margin: auto;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <button id="btn">换肤</button>
+</body>
+
+</html>
+<script>
+    /* 
+    if  esle 
+    ? :  三元运算是有返回值的
+    switch  case   绝对比较 ===;  break
+    switch(值){
+        ease:值
+    }
+
+   || 或   &&  且
+     */
+    var a = 1 ? 'hahah' : 'hehehe'   // 1 ? 'hahah' : 'hehehe'的返回值是  'haha'
+    console.log(a);
+    if (111231) {
+
+    }
+    if (true || false) {
+        //成立
+    }
+    if (1 && 0) {
+        //不成立
+    }
+    if (1 > 2 && 3 > 2) {
+
+    }
+
+    // var n = 100 || 200;
+    // console.log(n);//100
+    // var n2 = 0 || 6;
+    // console.log(n2);//6
+    // var n3 = 0 || NaN;
+    // console.log(n3);//NaN
+    // var n4 = 100 || 0;
+    // console.log(n4) //100
+    // //   或  前边成立给前边  前边不成不成立给后边
+
+
+    var n = 100 && 200;
+    console.log(n);//200
+    var n2 = 0 && 6;
+    console.log(n2);//0
+    var n3 = 0 && NaN;
+    console.log(n3);//0
+    var n4 = 100 && 0;
+    console.log(n4) //0
+    //  且  前边成立给后边  前边不成立给后边
+</script>
+
+<script>
+    //创造一个变量  flag  自已定义 flag是true 代表当前是红色  false  代表当前黄色
+    // 每次点击 只要控制 flag 的值即可，
+    var flag = true;
+    btn.onclick = function () {
+        flag = !flag; //重新给   flag   赋值  赋予的是 改变之前 flag 的反义词;
+        box.style.background = flag ? 'red' : 'blue';
+    }
+</script>

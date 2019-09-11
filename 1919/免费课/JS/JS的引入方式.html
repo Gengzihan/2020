@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 外链式 -->
+    <link rel="stylesheet" href="../1919/1.css">
+    <style>
+        /* 内嵌式 */
+        div {
+            /* 标签选择器 */
+            font-size: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="color: aqua" id="box">
+        hello worid
+    </div>
+    <!-- 
+        JS的引入方式
+       JS的引入方式
+        内嵌式  在文档中  写一个  script标签即可；把对应的JS代码写到script标签内部即可
+
+        行内式  禁止写
+        外链式  仍是script标签  通过script标签的src行内属性引入外界的一个JS文件
+     -->
+    <!-- <script>
+     box.onclick = function(){
+        //  翻译成汉语就是点击box要做什么事
+        alert(666); //弹出   666；
+     }
+     </script> -->
+    <!-- ./ 代表同一级   ../代表上一级 -->
+    <script src="./3.JS">
+        //从上向下  一步一步
+        //  若一个script标签写了 src属性 则标签内部包含的JS代码 就不再执行了
+        alert(111);
+    </script>
+</body>
+
+</html>

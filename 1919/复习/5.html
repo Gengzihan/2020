@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<button id="btn">验证码</button>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+     Math.ceil   Math.floor
+     [0-10]
+     Math,round(Math.random()*(m-n)+n)
+     var str='大字符串'
+     [0-61]
+     拼接成新字符串
+    */
+    function fn() {
+        var str = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789';
+        var s = '';//用来拼接获取得到的字符
+        while (s.length < 4) {
+            var n = Math.round(Math.random() * 61);
+            if (s.indexOf(str[n]) == -1) {
+                s += str[n]
+            }
+        }
+        return s;
+    }
+    var btn = document.getElementsByTagName('button')[0];
+    btn.onclick = function () {
+        this.innerHTML = fn();
+    }
+</script>

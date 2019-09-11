@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    字符串的所有方法  都不会改变原有字符串
+    charAt
+
+    str.toUpperCass()   转成大写
+    str.toUowerCase()   转成小写
+    str.indexOf()
+    str.lastIndexOf()
+    str.split('+')  以指定符号  把字符串分割成数;
+    ary.join('+')   把数组中的每一项用指定字符串拼接成字符串
+
+    str.slice(n,m)  获取一个新的字符串 从索引n到 索引m 包含n不包含m
+    n,m都可以是负数  用字符串的长度加上对应的负数即可
+    n大于m的时候  得到一个空字符串
+    str.substr(n,m)  从索引n     获取m个字符
+    str.subtring(n,m)   类似于 slice  第  n > m  内部会自动获取从小到大的字符
+    str.replace(a,b)  把str中的a  替换成  b  
+    str.trim()   去除字符串的首尾空格
+    
+     */
+    var ary = [1, 2, 3, 4, 5]
+    var str = 'hello world';
+    console.log(str.charAt(1)) //str(1)
+    console.log(str.charCodeAt(1))//
+    str[1] = '666';
+    ary[1] = '666';
+    console.log(str, ary);
+
+    var str = '1+2+3+4-55-5';
+    console.log(str.split('+'))
+    console.log(str.split('-'))
+
+    var str = 'http://www.zhufengpeixun.cn/?ref=qipaoxian&a=12&b=13';
+       //res===>{ref:'qipaoxian',a:'12',b:'14'}
+    function getQuery(str) {
+        //使用split方法分割字符串  先用 ？ 分割，再用 & 分割，  再用 = 分割
+        var str2 = str.split('?')[1];
+        var ary = str2.split('&');
+        var obj = {};
+        ary.forEach((v, i) => {
+            var arr = v.split('=');//第一项arr[0]作为属性名 第二项arr[1]作为属性值
+            obj[arr[0]] = arr[1]
+        });
+        return obj;
+    }
+    var res = getQuery(str);
+    console.log(res);
+    //res===>{ref:'qipaoxian',a:'12',b:'14'}
+
+    //slice  subStr   subString  replace  trim
+    var str = 'hello world'
+    console.log(str.slice(2, -3))
+    console.log(str.slice(2, 8))
+    console.log(str.split(5, 2))
+
+
+
+    console.log(str.substr(1, 3))
+    console.log(str.substring(1, 3))
+    console.log(str.substring(3, 0))
+
+    var res = '你好  中国'.replace('中国', '中国人民');
+    console.log(res);
+
+    var str = 'adcdadcdds'
+    var res = str.replace('a', 'A').replace('a', 'A');
+    var res2 = str.replace(/a/g, 'A');
+    console.log(res, str, res2);
+    var str = '       hello        ';
+    console.log(str, str.trim())
+    console.log(str)
+
+    //var str= 'woainijinshifduomojiankuduomianfuaq'  获取字符串中出现次数最多的那个字符  还得知道出现多少次！
+</script>

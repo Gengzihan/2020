@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var ary = [1, 'qq', true, null, undefined, function () { console.log(666); }]
+    //  查  通过索引  ary[a00]
+    ary[5]()
+
+    // 增  给数组的末尾增加一项    push  
+    ary.push(888)//geiary这个数组的末尾添加一项  对应的值是888
+    console.log(ary);
+
+    var ary2 = [1, 2, 3, 4, 5]
+    //给这个数组增加6,7,8,9
+    var res = ary2.push(6, 6, 6, 6);
+    console.log(ary2, res);
+    //push 的方法 是向数组的末尾添加的，可以添加多项  返回值是改变后的数组长度 ；改变原有数组
+    var a = ary2;
+    a.push(9);
+    console.log(ary2)  //ary2  中有没有  9  这一项
+
+    //向数组的头部增加项
+    //unshift 方法: 返回值是也是改变后的  原有  数组的长度
+    var ary = [1, 2, 3];
+    var res = ary.unshift(6, 6, 6);
+    console.log(ary, res)
+
+    //通过 length 的方法  向数组末尾添加项
+    ary[ary.length] = 666;
+    console.log(ary)
+    // 封装一个 myPush
+    function myPush(ary, n) {
+        ary[ary.unshift] = n;
+    }
+    var arr = [1, 2]
+    myPush(arr, 222);
+    console.log(arr)
+
+    //删除
+    // pop 删除末尾  不用转参数 pop 的返回值 是删除的那一项  改变了原有数组
+    var ary = [1, 2, 3]
+    var res = ary.pop();
+    console.log(res, ary);
+    // shift 删除首位  不用传参 shift 的返回值  是删除的那一项  改变了原有数组
+    var ary = [1, 2, 3]
+    var res = ary.shift();
+    console.log(res, ary)
+
+    //通过 lenght  删除最后一项  ary.lenght--   ary.lenght=ary.lenght - 1 ;
+
+    //改    
+    //splice (n,m,x,y,z..) 从索引n开始  删除m个  然后用x,y,z... 去代替删除位置上的元素
+    //若 m 是0 则代表在索引为n的前边  添加  x， y，z,......
+    //splice的返回值  是由删除的项组的新项组  改变原有数组
+    var ary = [1, 2, 3];
+    // ary.splice(1, 0, 6, 6, 6, 6);
+    // console.log(ary)
+
+    //使用splice 实现项数组尾部添加的新的项
+    ary.splice(ary.length - 1, 0, 666);
+    console.log(ary)
+
+    //使用splice 实现项数组头部添加新的项
+    ary.splice(0, 0, 666);
+    console.log(ary)
+
+    //使用splice  实现删除数组尾部
+    ary.splice(ary.length - 1, 1)
+    console.log(ary)
+
+    //使用splice  实现删除数组头部
+    ary.splice(0, 1)
+    console.log(ary)
+
+    //删除数组最后一位   ary.pop()  ary.lenght--   ary.splice(ary.lenght-1,1)
+    //项数组末尾添加   ary.push(666)  ary[ary.length]=666   ary.splice(ary.lenght,0,666)
+
+    var ary = [1, 2, 3, 4, 5, 6]
+    var res = ary.splice(1, 3);
+    console.log(ary)
+
+</script>

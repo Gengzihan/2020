@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 600px;
+            height: 300px;
+            background: rgb(122, 32, 134);
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    /*
+    基本数据类型   操作值   储存在栈内存中   栈内存是提供代码运行环境
+    引用数据类型   操作地址  储存在堆内存中
+
+    基本数据类型   number  string boolean  null  undefined
+
+    引用数据类型   {}  []   Math   Date   正则   function
+    普通对象  var obj={}
+    获取对象中某个属性对应的属性值   obj.age  === obj{'age'}
+    obj.age =xxx;
+    假则   obj.age=null
+
+    对象的储存过程  先去堆内存开辟一个新地址   然后把键值对都存储在这个地址中  然后把地址符给你变量
+        */
+    // var age = 100;
+    // var obj = {
+    //     age: age,
+    //     age2:'age'
+    // };
+    // var q = age123;
+    // console.log(obj.age)  //100
+    // console.log(obj.age2)  //'age'
+
+
+
+    // for (var i = 0; i < 10; i++) {
+    //     switch (i % 4 || '0') {
+    //         case 1:
+    //         case 3:
+    //             i += 1;
+    //             break;
+    //         case 0:
+    //         case 2:
+    //             i += 2;
+    //             break;
+    //         default:
+    //             i += 4;
+    //     }
+    // }
+    // console.log(i);
+    // || 前边成立给前边。前边不成立给后边
+    // i = 0；0 || '0' ===> '0'; switch ('0')  i-- > 4 i++ --> 5;
+    // i = 5; 1 || '0' ===> 1; switch (1)     i-- > 6 i++ --> 7;
+    // i = 7; 3 || '0' ===> 3; switch (3)     i-- > 8 i++ --> 9;
+    // i = 9; 1 || '0' ===> 1; switch (1)     i-- > 10 i++ --> 11;
+
+
+
+    /*
+    if alse
+    ?:
+    swith case
+
+    for in   一般用来循环对象  for(var k in obj)
+    for  for(var i= 0; i<xxx;i++){}
+    while   while(条件) {循环体}
+    */
+</script>
+<script>
+    var mybtn = document.getElementById('btn'),
+        mybox = document.getElementById('box');
+    var flag = true;//true 代表显示  false 代表隐藏
+    mybtn.onclick = function () {
+        //控制  box 的 显示或者隐藏  display
+        // mybox.style.display='none'
+        // 怎么判断  要让盒子 none掉还是  block
+        flag = !flag;
+        mybox.style.display = flag ? 'block' : 'none';
+
+    }
+    console.log(mybtn)
+
+</script>

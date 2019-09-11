@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        你好 珠峰培训
+    </div>
+</body>
+
+</html>
+<script>
+    var a = 10;
+    var b = a;
+    b = 100;
+    console.log(b);//100
+    console.log(a);//10
+
+    //obj代表的是一个地址
+    var obj = {
+        name: 666
+    }
+    var obj2 = obj;//把地址给了obj2，obj  和obj2  是同一个地址
+    obj2.name = 888;//把obj2  中的 name属性   对应的值  改成了888
+    console.log(obj.name)//888
+    console.log(obj2.name)//888
+    //值类型和引用数据类型根本的区别  就再去 值类型 是操作值的；  引用数据类型是操作地址的
+
+
+    var box = document.getElementsByClassName('box')[0];
+    box.style.color = 'red';
+    
+    var sty=box.style;
+    console.log(sty)//{''}
+    sty.color='green' //把style地址中的color 换成了  green
+
+    var col=box.style.color;
+    console.log(col)  //green
+    col='blue'//col  是一个字符串  是一个值类型，只是把col 这个变量对应的值改掉了；style这个地址中的color 没有改变；
+    
+    
+    
+</script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    Math
+    sqrt pow 
+    floor向下取整  ceil向上取整
+    max最大值   min最小值  
+    random [0-1]之间的随机数
+    round  四舍五入
+
+    */
+    //求数组的最大值
+    //1 先排序  再取值
+    //2 假设法
+    var ary = [123, 45, 67, 89, 133, 567, 89];
+    var max = ary[0];
+    ary.forEach((v, i) => {
+        if (v > max) {
+            max = v
+        }
+    })
+    //Math.max(...ary)
+    Math.max(...ary)
+
+    //[n-m]之间的随机整数
+    //[0-1]
+    Math.random()
+
+    //[0-10]
+    Math.random() * 10
+
+    //[3-13]
+    Math.random() * 10 + 3//Math.random()*(13-3)+3
+
+    // //[n-m]  之间的随机整数
+    // Math.round(Math.random() * (m - n) + n)
+
+    //[n-m]  之间的随机整数
+    // Math.floor(Math.random() * (m - n) + n)
+
+    //保留小数
+    var n = 123.456;
+    console.log(n.toFixed(2))
+
+</script>

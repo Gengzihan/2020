@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //alert(666);
+        //放到下方   一般不会出现  找不到元素的这种问题
+        //因为浏览器渲染页面从上向下渲染的；执行到这段JS的时候，DOM结构还没有被加载出来
+        // 若这里不涉及任何DOM操作 是可以放到body上方的；
+        window.onload = function () {
+            //页面加载完成的时候  再去执行的方法
+            btn.onclick = function () {
+
+                alert(666);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+</body>
+
+</html>
+<script>
+    //btn.onclick = function () {
+    //alert(666);
+    //}
+    /*
+    输出
+    alert()
+    confirm() 是有返回值  用户点击  确定   返回的就是ture   用户点击的  取消  返回的的就是false
+    console.log()
+    console.dir()
+    debugger;  断点   代码走到断点处就会停止  前提是打开控制台才能起作用！
+     */
+    var res = confirm('hello world');
+    console.log(res);
+
+    //  getElementById   getElementsByClassName  getElementsByTagName   querySelector(css选择器) querySelectorAll()
+
+    /*
+    声明变量   var let const  function class import
+    var 变量名=变量值； 右边的结果赋值给左边；以字母 下划线 _ $;可以遵循驼峰命名规范；尽量语义化
+    let const 不能重复声明； let声明的变量 值 是可以修改的
+    const  声明的变量  值 是不能修改的；
+     */
+    /*
+    基本数据类型  (值类型)
+   string (字符串)   number(数字)  boolean(布尔)  null  underfined
+
+    引用数据类型
+    对象   数组  正则  Date  function
+
+    string  引号包起来的部分  ""  ' '  ``  单不能包含单
+    字符串拼接  使用  +
+     */
+
+    var name = 'hello'
+    var age = 10;
+    console.log(name + "的年龄" + age + '岁') //hello  的年龄是  10 岁
+    console.log('${name} 的年龄是 ${age} 岁')//反引号中的变量必须使用${} 反引号中是直接写换行的；
+
+    /* 
+    nuber  整数  小数  NaN
+    Number()   从左向右看  只要碰到非数字  结果就是NaN
+    Number('')0
+    Nuber ([])0
+    Number (null)0
+    Number(false)0
+    Number([]) NaN
+
+    parseInt() 从左到右  碰到非数字(包含小数点)即停；第一个字符就是非数字  结果就是NaN
+   parsefloat() 从左到右  碰到非数字(不包含小数点)即停；第一个字符就是非数字  结果就是NaN
+
+   + - * / %
+   +  两边只要有一个是字符串，结果就是字符串拼接
+   其他  计算之前  把符号两边的内容使用   Number  转成数字之后再进行计算；
+   所有的数字跟 Nan  进行计算 结果都是NaN
+   出现NaN的场景  一个是强制转化失败 Nuber  parseInt  parsefloat;  四则运算失败
+
+   怎么判断NaN
+   ==  在程序中 两个等于号 是 比较的意思；
+   在数字中 没有任何内容  是跟 NaN 相等的；
+
+
+   JS中提供了一个isNaN(要判断的值)的方法来判断  某个值是否  NaN
+   isNaN()   返回值就是ture  或者  folse； true代表  要判断的值 是 NaN
+   运算过程   先把要判断的值  用Number 处理； 然后再去判断结果是否是NaN
+     */
+    var a = 1 + 'w';
+    var res = isNaN('a')
+    console.log(res);
+
+
+
+
+    /* 
+    boolean  布尔类型  true  false
+    Boolean() 把其他数据类型转化成    布尔类型   
+    0 NaN  '' null undefined  只有这五个值转成布尔结果是   false  其他全是true；
+    Number (false)  0
+    Boolean(0)  flase
+    !  是用来反转的   先用  Boolean转成布尔类型  然后再去取反   隐式转化
+    console.log(!1)   false  先用Boolean (!1) 把1转成了true   然后再去取true的反  (!true)
+       console.log(!true)  false
+    console.log(!false)  true
+
+    !!相当于使用了一次  Boolean();
+
+    null  空指针对象
+    undefined  未定义
+     */
+ 
+</script>

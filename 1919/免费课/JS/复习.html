@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /*
+    基本数据类型·  字符串  number  boolean  null  undefined
+    引用数据类型  基本数据类型操作值   引用数据类型操作地址
+    var obj ={属性名：属性值，key：value}  键值对  不同的键值对用逗号隔开
+    获取某个属性对应的属性值
+    obj.xxx 
+    obj ['xxx']
+    若key 是个数字  我们只能使用  []   的方式
+    获取一个不存在的属性时，拿到的 是  undefined
+    obj.age=123;  新增跟修改的写法是一样的
+    */
+
+    //变量和属性  使用一个不存在的变量时，直接报错，  使用某个对象中不存在的属性时，undefined、
+    //栈内存   储存值类型  提供运行坏境
+    //堆内存   储存引用数据类型   并提供一个对应的地址
+
+    // var obj={
+    //     age=10
+    // }
+    // var obj2=obj;//把obj 对应的地址 拷贝一份  给了obj2；那么obj  和 obj2 是指向同一个地址
+    // obj2.age=100;//把obj2  对应的地址中的  age  改成100；
+    // cinsole.log(obj.age);
+
+    /* 判断语句
+    if()()else{}
+
+    swith (){
+        case:
+        break：
+    }
+
+     */
+    if (1 > 2) {
+        console.log(11)
+    }
+    if (null) {
+        console.log(222)
+    }
+    var a = 2;
+    if (a === 3) {
+        //
+        console.log(4444)
+    }
+
+    var b = 1 ? 100 : 0;
+    console.log(b);
+
+    switch (2) {
+        case '2':
+            console.log(1)
+            break;
+        case 2:
+            console.log(2)
+        default:
+            console.log(3)
+            break;
+    }
+
+    var num = 100;
+    if (num > 100) {
+        console.log(110)
+    } else if (num == 100) {
+        console.log(100)
+    } else {
+        console.log(1)
+    }
+</script>

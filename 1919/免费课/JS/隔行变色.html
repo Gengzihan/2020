@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            height: 50px;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+        }
+
+        /* li:nth-child(2n){
+            background: rgb(105, 16, 24);
+        }
+        li:nth-child(2n+1){
+            background: rgb(51, 34, 128);
+        } */
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>
+<script>
+    //使用JS实现隔行变色
+    //设置每一行的背景色
+    var oLis = document.getElementsByTagName('li');//oLis  是一个元素集合
+    console.log(oLis)
+    //box.style.color  ='red'
+    //怎么给每一行设置一个不同的背景色
+    // oLis[0].style.background = 'blue'
+    // oLis[1].style.background = 'red'
+    // oLis[2].style.background = 'blue'
+    // oLis[3].style.background = 'red'
+    // oLis[4].style.background = 'blue'
+    // oLis[5].style.background = 'red'
+    // oLis[6].style.background = 'blue'
+
+    for (var i = 0; i < 7; i++) {
+        // console.log(i);
+        //第一种方法
+        // debugger;
+        // oLis[i].style.background = 'blue'
+        // i++;
+        // oLis[i].style.background = 'red'
+
+        console.log(i % 2)
+        // if (i % 2 == 0) {
+        //     //i%2==0说明   索引是   0  2  4  6  
+        //     oLis[i].style.background = 'blue'
+        // } else {
+        //     oLis[i].style.background = 'red'
+        // }
+
+        // i % 2 == 0 ? oLis[i].style.background = 'blue' : oLis[i].style.background = 'red';
+        oLis[i].style.background = i % 2 == 0 ? 'blue' : 'red'
+        //i%2  为0时，那就是个  false   这时  三元表达式的返回值  就是 冒号后边的结果
+        //i%2  为1时，那就是个 true  这时  三元表达式的返回值  就是 问号后边的结果
+        //把三元的返回值   赋给前边的背景颜色
+    }
+</script>

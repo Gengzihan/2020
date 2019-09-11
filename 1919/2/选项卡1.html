@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 600px;
+            border: 1px dashed salmon;
+            margin: auto;
+        }
+
+        ul {
+            width: 100%;
+            height: 50px;
+            display: flex;
+        }
+
+        ul li {
+            flex: 1;
+            text-align: center;
+            line-height: 50px;
+            color: red;
+            font-size: 25px;
+        }
+
+        ul li:hover {
+            background: violet;
+        }
+
+        ul li.current {
+            background: violet;
+        }
+
+        .body_box {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .body_box div {
+            text-align: center;
+            line-height: 200px;
+            font-size: 50px;
+            background: turquoise;
+            display: none;
+        }
+
+        .body_box div.current {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="tab_box">
+            <li class="current">css</li>
+            <li>ggggg</li>
+            <li>hhhhhh</li>
+        </ul>
+        <div class="body_box">
+            <div class="current">log</div>
+            <div>rerd</div>
+            <div>hanhan</div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+    var tabs = document.getElementsByTagName('li'),
+        bodys = document.querySelectorAll('.body_box div');
+    console.log(tabs, bodys)
+
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].myIndex = i;
+        tabs[i].onclick = function () {
+            console.log(this);
+            for (var j = 0; j < tabs.length; j++) {
+                tabs[j].className = '';
+                bodys[j].className = '';
+            }
+            this.className = 'current';
+            bodys[this.myIndex].className = 'current'
+        }
+    }
+</script>

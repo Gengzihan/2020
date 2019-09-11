@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //数字  整数  小数  NaN  (not a number)
+    var n = 12;
+    var n2 = '12';
+    //Number()  //把其他数据类型转成  数字类型
+    var n2 = Number('12');
+    console.log('12', n2)
+    console.log(Number(''))//0
+    console.log(Number('12w'))//NaN
+    //NaN 转换类型的规律  从左向右看， 只要碰到非数字  结果就是NaN;
+
+    //parseInt ()  过滤出整数， 规律  从左向右查看 即停止转化， 若第一个字符就是非数字，结果就是NaN;
+    console.log(parseInt('12w'))
+    console.log(parseInt('12w23456'))
+    console.log(parseInt('q123')) //NaN
+    console.log(parseInt('12.3w'))//12
+
+    //parseFlont()  唯一区别  在于对小数点的处理；规律类似  parseInt
+    console.log(parseFloat('12.3w'))//12.3
+
+
+    //四则运算  + - * /  %(取余)  意思就是  5%2  余几
+    //对于+  来说  只要+ 一边出现字符串； 那么结果就是字符串拼接
+    //- * / %  先把符号两边之内内容转成(Number)  数字 然后在计算
+    var str='24';
+    var m = 10;
+    console.log(str+m)
+    console.log(1+2+3+'4'+5+6)  //6+'4'+5+6    "64"+5+6   "645"+6  "6456"
+    console.log(str-m); //数字  14
+    console.log(str-'q')//NaN     凡是与NaN做运算的，结果都是NaN  (除了字符拼接)
+    console.log(str + NaN)
+</script>

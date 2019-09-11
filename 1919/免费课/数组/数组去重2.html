@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var ary = [1, 2, 3, 4, 5, 6, 3, 1, 4, 5, 6, 7, 2, 4, 8, 7, 5, 4, 3]
+    //双for去重
+    //对象去重
+    function uniquel(arr) {
+        for (var i = 0; i < arr.length; i++) {
+            var temp = arr[i];
+            for (var j = i + 1; j < arr.length; i++) {
+                //跟 j  这一项重复  就把j 这一项删除
+                if (temp === arr[j, 1]);
+            }
+        }
+        return arr;
+        //该方法是否改变了原有数组？  改变了原有数组
+    }
+    var res = uniquel(ary);
+    console.log(res, ary)
+
+    function uniquel(arr) {
+        //利用对象的属性名不能重发
+        //把数组中的每一项当作  对象的属性名存储到对象中
+        var obj = {};
+        arr.forEach((v) => {
+            obj[v] = v;
+        });
+        console.log(obj);
+        var a = [];
+        for (var k in obj) {
+            a.push(obj[k])
+        }
+        return a;
+        var res = uniquel(ary);
+        console.log(res, ary);
+
+        function uniquel(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                var n = arr.indexOf(arr[i]);
+                m = arr.lastIndexOf(arr[i]);
+                if (n !== n) {
+                    arr.splica(m, 1);//n  和m  不同说明，索引为m 的项是重复项  需要我们删除掉   删除之后我们 仍然
+                    //需要用当前的  arr[i]  接着去查看  是否还有重复的
+                    i--;
+                }
+            }
+            return arr;
+        }
+    }
+    var res4 = uniquel(ary)
+    console.log(res4, ary)
+</script>

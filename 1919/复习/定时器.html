@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <h1>累计数字是 <span id="num"></span></h1>
+</body>
+
+</html>
+<script>
+    //  JS  异步单线程
+    //  setTimeout   setInterval
+    //  setInterval   一直执行   setTimeout  只执行一次
+    //  clearTimeout       clearInterval   清除执行
+    //  */
+     var timer = setTimeout(() => {
+         console.log(666)
+     }, 3000);
+     var timer2 = setTimeout(() => {
+        console.log(111)
+         clearInterval(timer)
+     }, 1000);
+
+ var time3 = setInterval(function () {
+        console.log(666)
+         clearInterval(time3)
+     }, 2000)
+    var btn = document.getElementById('btn'),
+         num = document.getElementById('num'),
+     var n = 0;
+
+    // var flag = false;
+    // var timer4 = '';
+    // btn.onclick = function () {
+    //     if (flag) {
+    //         clearInterval(timer4)
+    //         flag = false;
+    //     } else {
+    //         timer4 = setInterval(() => {
+    //             n++;
+    //             num.innerHTML = n;
+    //         }, 1000)
+    //         flag = false;
+    //     }
+    // }
+
+    //定时器的毛病   离开当前页面之后   定时器的时间就不流进了
+
+    ///怎么用  递归+setTimeout  实现setInterval
+    function f(){
+        console.log('我是谁')
+        setTimeout(()=>{
+            f()
+        },1000)
+    }
+
+  
+</script>

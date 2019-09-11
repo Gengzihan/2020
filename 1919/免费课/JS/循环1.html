@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">点我</button>
+</body>
+
+</html>
+<script>
+    var user = {
+        name: '珠峰',
+        age: '10',
+        hobby: '吃',
+        sex: '男',
+
+    }
+    var bol = 'name' in user;  //  name 属性 在不在 user 这个对象中
+    console.log(bol);
+    /* 
+    for in 循环
+    for(var key in user){
+        //循环体，循环一次， 循环体就会循环一次
+        key 是自定义的一个变量
+        key 是指的 user 中的 每一个属性名
+        console.log(key)
+    }
+    */
+    // // for (var k in user) {
+    //     console.log('================================================')
+    //     console.log(k) //输出的是每一个属性名
+    //     //需求  输出每一个属性名对应的属性值
+    //     // debugger;
+    //     console.log(user.k)//user 的k属性
+    //     console.log(user['k'])//user的k属性
+    //     console.log(user[k])//k='name'    user['name']  user.name   user的 name 属性
+    // }
+
+
+    var btn = document.getElementsByClassName('btn')[0];
+    //点击按钮  弹出 我的name是珠峰   我的age是10  我的hobby是吃   我的sex是男！
+
+    btn.onclick = function () {
+        var str = '';
+        for (var key in user) {
+            debugger
+            str = str + `我的${key}是${user[key]}`
+        }
+        alert(str)
+
+
+    }
+
+    /*
+    for循环
+    for(var i = 0; i<5;i++){
+        循环体
+    }
+    第一次  i是0，  用0跟5作比较   条件成立走循环体   不成立跳出for循环
+    第二次 i是1，   用1<5作比较    条件成立走循环体   不成立跳出for循环
+    .....
+    第四次    i是3  用3< 5 作为条件   条件成立走循环体   不成立跳出for循环
+    第五次  i是4 用 4<5 作为条件     条件成立走循环体   不成立跳出for循环
+    第六次  i是5 用5<5 作为条件   条件成立走循环体   不成立跳出for循环
+
+    循环体 一共循环了几次？  五次
+
+    for  循环体中的两个关键字
+    continue;   若循环体中  执行到了 continue 则会跳出本次循环  接着进行下一次循环
+    break;    若循环中  执行到了 break   则整个for  循环就结束辽！
+    */
+    for (var i = 0; i < 10; i++) {
+        // console.log('hahahaha')
+        if (i == 3) {
+            // continue;
+            break;
+        }
+        console.log(i)
+    }
+    // console.log('外面', i)
+
+    for (var i = 0; i < 8; i++) {
+        if (i == 3) {
+            i += 3;
+            continue;
+        }
+        console.log(i)
+    }
+    /*
+    while(条件){
+       循环体
+    }
+   ** 当 while**    条件成立时   执行循环体   只有当条件不成立的时候，才能跳出 while 循环
+
+
+   当我们不知道要循环多少次的时候，我们才会选择使用while循环
+    */
+    var n = 0;
+    while (n < 6) {
+        n += 2;
+        console.log(n)
+    }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>珠峰培训</h1>
+</body>
+
+</html>
+<script>
+    var obj = {
+        name: '珠峰',
+        age: 9,
+        sex: "男"
+    };
+    //姓名是珠峰，年龄是9岁，性别是男
+    var str = '姓名是' + obj.name + ",年龄是" + obj['age'] + '岁,性别是' + obj.sex;
+    console.log(str);
+    var str2 = `姓名是${obj.name},年龄是${obj.age}岁，性别是${obj.sex}`;
+    console.log(str2);
+    
+    //这个对象的name属性的值是珠峰，age属性的值是9，sex属性的值是男；
+    //for in 循环
+    /*  for (var 变量名  in  对象名){
+        循环体 
+        变量名  对应的就是 对象中的每一个属性
+        }
+   */  
+   for(var k in obj){
+       console.log(k);
+       console.log(obj[k]);
+   }  
+</script>

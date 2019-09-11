@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="inp" type="text" placeholder="验证是否是有效数字">
+    <button id="btn">按钮</button>
+</body>
+
+</html>
+<script>
+    var n = 10,//var n=10；var m='20'
+        m = '20'
+    var res = typeof m;//  n  的类型   返回值 是一个字符串
+
+    //数字类型  的 返回的是 字符串  'number'
+    //字符串类型的 返回的是 字符串 'string'
+    //布尔类型  返回的是  字符串  'boolean'
+    //typeof   undefined  返回的是   'underfined'
+    //typeof  null  返回的是  'object'
+    var obj = {};
+    console.log(typeof obj)
+    console.log(res);
+    console.log(typeof !1)
+
+    /* 
+    typeof   可以区分基本数据类型(null除外)  但是没办法区分 引用数据类型
+    constructor  去判断数据类型
+    object.prototype.toString.call(xxx) ===>({}).toSting.call(xxx)
+    对象的原型上的  tostring  方法  使用 callzhixin
+    xxx  instanceof  Array  智能判断引用数据类型  返回值是true 或者是false
+     */
+    var res2 = typeof typeof 1;//'number'  'string'
+
+    //需求点击按钮  判断  输入框的内容  是否是有效数字(是否含NaN)  是NaN 就弹出  不是有效数字
+    btn.onclick = function () {//点击按钮干什么事
+        var val = inp.value;//获取   输入框的内容
+        var str = isNaN(val) ? '不是有效数字' : '是有效数字';  //根据输入框的内容来决定   显示的文案
+        alert(str);
+    }
+</script>

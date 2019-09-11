@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box" id="app">
+        hello world
+    </div>
+    <biv class="box"></biv>
+    <div class="box"></div>
+    <div class="box"></div>
+    <!-- ul.link-box>li*4 -->
+    <ul class="list-box">
+        <li>珠峰</li>
+        <li>培训</li>
+        <li>2019</li>
+        <li>09</li>
+    </ul>
+</body>
+
+</html>
+<script>
+    //想操作哪个元素 就获取哪个元素
+    //点击box盒子弹出666
+    app.onclick = function () {
+        alert(666);
+    }
+    console.log(app)
+    //上边的这种获取方式是直接使用元素的ID 去代表对应的元素；只有高版本浏览器支持
+    //JS中的  点  代表从属关系，翻译成 的 ； 身体.胳膊.手.手指
+    //1.通过ID名获取元素
+    console.log(document.getElementById('app'));  //document的getElementBYID方法
+    console.log(document.getElementById('box')) //null
+
+    //2.通过类型(class名)  获取元素  获取到的是一个集合 （一组）
+    //集合中  我们通过对应的索引 (0,1,2,3,4,5,...)  去获取对应的元素
+    //第一个box的索引是  0  
+    console.log( document.getElementsByClassName('box'))  //Elements
+    console.log( document.getElementsByClassName('box')[0]) //通过索引获取
+
+    //3,通过标签名 (tagName) 获取元素;同类名  获取到的也是一组元素
+    console.log(document.getElementsByTagName('li'))
+    console.log(document.getElementsByTagName('li')[2])
+
+    //4. queryselector(css选择器) css选择器 .box #app div li ...
+    //只能获取一个元素  （第一个)
+    console.log(document.querySelector('#app'))
+    console.log(document.querySelector('.box'))
+
+    //5. queryselector  (css选择器)  也是一个集合  获取一组元素
+    console.log(document.querySelectorAll('.box'))
+    console.log(document.querySelectorAll('.box')[2])
+
+    //获取第三个li 并且当点击第三个li时  弹出666
+    console.log(document.getElementsByName('li')[2])
+    document.getElementsByTagName('li')[2].onclick = function () {
+        alert(666);
+    }
+</script>

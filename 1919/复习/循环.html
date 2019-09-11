@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            width: 800px;
+            height: 50px;
+            border: 1px solid saddlebrown;
+            margin: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>
+<script>
+    /* 
+    for in  循环对象
+    for (var key in obj){
+        key:代表对象中的每一个属性名
+        obj[key]  代表属性名对应的属性值 
+    }
+     */
+    var obj = {
+        a: 12,
+        b: { a: 20 },
+        c: 'hello',
+        d: true
+    }
+    for (var k in obj) {
+        console.log(k, typeof k)
+        console.log(obj[k])
+        console.log(obj.k)//就是获取 obj 中的 属性名 是 k 字符对应的这个属性值
+    }
+    /*
+    for  循环
+    for (var i =0; i=10 ;i++){
+        先拿到i的值  然后用 i 的值去做比较，  查看条件是否成立
+        成立  就走循环体   循环体走完之后  把i  累加 1 加完之后
+        再去进行条件判断
+        直到条件不成立时 跳出循环体
+        、continue  跳出本次循环
+        break     跳出整个循环  整个循环直接结束
+    }
+     */
+    var oLis = document.getElementsByTagName('li');
+    console.log(oLis)
+    //oLis.length  代表 该集合的长度  也就是集合中 元素的个数
+
+    //onmouseenter(鼠标进入事件)    onmouseleave(鼠标离开事件)
+    for (var i = 0; i < oLis.length; i++) {
+        oLis[i].style.background = i % 2 ? 'blue' : 'red';
+        //给每一个 li 绑定一个 鼠标进入事件
+        oLis[i].onmouseenter = function () {
+            // console.log('进入')
+            //this  在这里代表的是当前操作的这个元素
+            // console.log(i);
+            // oLis[i].style.background = 'gold';
+            console.log(this);
+            this.style.background = 'gold';
+        }
+        oLis[i].onmouseleave = function () {
+            console.log('离开')
+        }
+    }
+    console.log('结束')
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function total(a, b) {
+        var t = a + b;
+        console.log(t);
+    }
+
+    total(2, 3)
+    var res = isNaN('12q');
+    console.log(res)
+
+    var res2 = total(3, 4)//total  的执行结果是  undefined
+    console.log(res2)
+
+    function total2(a, b) {
+        var t = a + b;
+        return t; //返回t
+        console.log('66666666666666666')
+    }
+    var res3 = total2(10, 20);
+    //这个是个赋值表达式   是要给  res3 赋值的  赋予的其实就是  total2 的执行结果
+    //total2  的执行结果  是由total2 函数的 return 后边的值决定的  也就是由函数的返回值决定的
+    console.log(res3)
+
+    function fn(){
+        console.log(666)
+        return
+    }
+    var r = fn();
+    console.log(r);
+    /*
+    return 是决定了  函数的运行结果   也就是函数执行完成之后最终的返回值
+    另外一个作用是打断函数的执行
+
+    不写return  时，函数的运行结果是(返回值)是  undefined
+    写了return  但是  return  后边没代码，  返回值 undefined
+
+
+
+     */
+     
+</script>

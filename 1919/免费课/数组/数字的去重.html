@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var ary = [1, 2, 3, 2, 4, 4, 5, 5, 3, 7, 6, 8, 7, 9, 3];
+    /* 
+    数组去重  把数组中的重复项删掉
+    
+     */
+    for (var i = 0; i < ary.length; i++) {
+        //第几轮
+        var temp = ary[i];
+        for (var j = i + 1; j < ary.length; j++) {
+            if (temp === ary[i]) {//j -> 2 
+                ary.splice(j, 1) //数组整个往前进了一位   数组的塌陷
+                j--
+            }
+        }
+    }
+    console.log(ary);
+
+    //方法2:  利用对象的属性名不能重复
+    var obj = {};
+    ary.forEach(function (v, i) {
+        obj[v] = v
+    })
+    console.log(obj);
+    var arr = '';
+    for (var k in obj) {
+        arr.push(obj[k])
+    }
+    console.log(arr);
+
+
+</script>

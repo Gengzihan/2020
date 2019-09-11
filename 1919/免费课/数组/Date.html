@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn"></button>
+    <h1>您点击按钮的时间是 <span id="time"></span> </h1>
+</body>
+
+</html>
+<script>
+    /* 
+    Date  日期  获取的是本期时间
+     */
+    var d = new Date();
+    console.log(d);
+    var now = new Date();
+    var y = now.getFullYear();//获取当前的年份
+    console.log(y);
+
+    var m = now.getMonth();//获取当前月份  跟正常月份差1
+    console.log(m);
+
+    var d = now.getUTCDate();  //获取日子号
+
+    var d2 = now.getUTCDay();//获取的是星期几  0 是星期日  其他都一样
+
+    console.log(d, d2)
+
+    var h = now.getHours();//获取当前的小时
+    console.log(h);
+
+    var m = now.getMinutes();//获取当前的分钟数
+    console.log(m);
+
+
+    var s = now.getSeconds();//获取当前的秒数
+    console.log(s);
+
+    var ms = now.getMilliseconds();//获取的是毫秒
+    console.log(ms);
+
+    var t=now.getTime();//距离1970年1月1号  0点0分  0秒 的毫秒差
+    //  等价于  Date.now()
+
+    //在页面上展示出当前点击的时间v
+    //点击这个按钮时  在这个页面展示出  你在xxx时间   点击了这个按钮
+    var btn = document.getElementById('btn'),
+        time = document.getElementById('time');
+    btn.onclick = function () {
+        //点击获取当前时间 然后把时间放到对应的盒子中
+        var now = new Date();
+        var ary = ['日', '一', '二', '三', '四', '五', '六'];
+        var y = now.getFullYear(),
+            m = now.getMonth(),
+            d = now.getDate(),
+            w = now.getDay(),
+            h = now.getHours(),
+            mi = now.getMinutes(),
+            s = now.getSeconds();
+
+        time.innerHTML = `${y}年${m + 1}月${d}日 星期${ary[w]}${h}时${m}分${s}秒`
+    }
+</script>

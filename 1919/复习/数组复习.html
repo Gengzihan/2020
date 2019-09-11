@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var obj = {
+        f: function () {
+            console.log(666)
+        }
+    }
+    //f 执行
+    obj.f()//666
+    var obj2 = obj;
+    obj2.f = function () {
+        console.log(777)
+    }
+    obj.f();//777
+
+    obj2 = {
+        f: function () {
+            console.log(888)
+        }
+    }
+    obj.f();//777
+
+    var arr = [];//字面量的创建方式
+    Number([])//0  [].toString():''
+    Number([1, 2])//NaN  字符串1 和  字符串2
+
+    //增删改查
+
+    //push    补项  改变后的数组长度
+    var ary = [1, 2, 3];
+    ary.push([4, 5, 6])
+    console.log(ary[3])
+    //通过length   ary[ary.length]=666;
+    function mypush() {
+        var arr = arguments[0];//我们要操作的数组
+        for (var i = 1; i < arguments.length; i++) {
+            //从第二项开始  才是我们要项 arr 中添加的项
+            arr[arr.length] = arguments[i]
+        }
+        return arr.length;
+    }
+    var ary = [1, 2];
+    mypush(ary, 4, 5, [6, 7, 8], 9);
+    console.log(ary);
+
+    //pop()   删除数组的最后一项  返回值是删除的那一项
+    //ary.length
+    function mypush(arr) {
+        var a = arr[arr.length - 1];  //为了把最后一项先存起来
+        arr.length--;
+        return a;
+    }
+
+    var ary = [1, 2, 3]
+    var res = mypush(ary);
+    console.log(ary, res);
+
+    //unshift()  用法与返回值  等同  push  只是向数组的头部添加
+    //  shift()  用法与返回值  等同  pop   只是删除数组头部
+
+    //splice(n,m,x,y,z...)  从索引m开始删除那个m个  用x,y,z,...替换删除的那些项
+    //m若是0  则添加的项是在 索引n的前边
+    //使用  splice  实现push  pop  unshift  shift
+    function mypush2(arr, ...abc) {
+        //...  在函数中  叫剩余运算符   abc  是个数组  存储的是  除了第一项之后的所有项
+        // var arr = arguments[0];
+        console.log(abc);
+        arr.splice(arr.length, 0, ...abc)//扩展运算符  解构，把abc数组拆开
+        return arr.length;
+    }
+    var ary = [1, 2]
+    mypush2(ary, 4, 5, [6, 7, 8], 9);
+
+    function mypop2(arr) {
+         return arr.splice(arr.length-1,1)[0]
+       
+    }
+
+    function myunshift2() {
+
+    }
+    function myshift2() {
+
+    }
+</script>

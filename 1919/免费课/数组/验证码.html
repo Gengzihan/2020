@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            margin: auto;
+            font-size: 30px;
+            text-align: center;
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <i id="box">JOdy</i>
+</body>
+
+</html>
+<script>
+    /* 
+    封装一个函数  每次函数执行  都能得到由四个不同的字符串 组成的字符串 
+
+    "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+
+     */
+    function fn() {
+        var str = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+        //获取一个0到61之间的随机整数
+        //Math.round(Math.random()*61)
+        var str2 = '';
+        for (var i = 0; i < 4; i++) {
+            var n = Math.round(Math.random() * 61);
+            str2 = str2 + str[n];
+        }
+        return str2;
+    }
+    var str = fn();
+
+    //保证字符串不重复
+    function fn2() {
+        var str = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+        //获取一个0到61之间的随机整数
+        //Math.round(Math.random()*61)
+        var str2 = '';
+        for (var i = 0; i < 4; i++) {
+            var n = Math.round(Math.random() * 61);
+            //拼接之前  先判断  字符串中是否有  对应的字符  有的话就不拼接
+            //indexOf
+            if (str2, indexOf(str[n] === -1)) {
+                str2 = str2 + str[n];
+                //若得到的字符  在str2中存在;那么我们需要要让本次循换再执行一次
+            } else {
+                i--
+            }
+
+
+        }
+        return str2;
+    }
+    var str = fn();
+
+    function fn3() {
+        var str = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+        //获取一个0-61之间的随机整数
+        //Math.round(Math.random()*61)
+        var str2 = '';
+        var i = 0;
+        while (i < 4) {
+            var n = Math.round(Math.random() * 61);
+            if (str2, indexOf(str[n] === -1)) {
+                str2 = str2 + str[n];
+                i++
+            }
+        }
+
+        return str
+
+
+</script>
+<script>
+        function fn4() {
+            var str = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+            // 获取一个 0-61之间的随机整数
+            // Math.round(Math.random()*61)
+            var str2 = '';
+            while (str2.length < 4) {
+                var n = Math.round(Math.random() * 61);
+                if (str2.indexOf(str[n]) === -1) {
+                    str2 = str2 + str[n];
+                }
+            }
+        }
+        return str2;
+    }
+    //把内容的字符展示到页面上  每次点击时  都要更新一下验证码
+    var box = document.getElementById('box');
+    box.innerHTML = fn4();
+    //把得到的字符展示到页面上
+    box.onclick = function () {
+        //都要更新一下验证码   更新innerHTML
+        box.innerHTML = fn4();
+    }
+
+</script>

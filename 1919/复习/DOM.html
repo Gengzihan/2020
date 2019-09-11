@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <biv class="box">
+        你好
+        <i>hello</i>
+        <span>world</span>
+        <div>666</div>
+        <!-- 这是一个注释 -->
+    </biv>
+</body>
+
+</html>
+<script>
+    /* 
+    节点         元素节点   文本节点   注释节点  根节点
+    nodeType        1         3         8        9
+    使用  nodeType   判断某个节点是不是元素节点
+    根节点  就是指的 document;
+
+     */
+    var box = document.getElementsByClassName('box')[0];
+    console.dir(box);
+    console.log(box.parentNode);//box的父节
+    console.log(box.childNodes);//box的所有子节点
+    console.log(box.children);//box的所有元素子节点   不兼容  ie8
+    console.log(box.previousSibling)//box的哥哥节点  若不存在  结果是个  null；
+    console.log(box.previousElementSibling)//box的哥哥元素节点  若不存在  结果就是null  不兼容 ie8
+    console.log(box.nextSibling)//box的弟弟节点
+    console.log(box.nextElementSibling)//box的弟弟元素节点     不兼容 ie8
+
+    // 思考  自已封装一个方法  可以获取某个元素下的所有元素子节点
+    function getChildren(ele) {
+        for (var i = 0; i < ele.childNodes.length; i++) {
+            if (ele.childNodes[i].nodeType == 1) {
+                //     ary.push(ale.childNodes[i])
+            }
+        }
+        return ary;
+    }
+    // var res = getChildren(box);
+    // console.log(res);
+
+    function getBroEle(ele) {
+        // 获取 ele 的哥哥节点  然后判断是否是元素节点  不是的话 接着向上查找
+        var bro = ele.previousElementSibling;
+        while (!bro && bro.nodeType !== 1) {
+            //哥哥节点存在  并且  不是元素节点  我们接着向上查找
+            //怎么接着向上查找?
+            bro = bro.previousSibling;
+        }
+        return bro;
+    }
+    var res2 = getBroEle(box);
+    console.log(res2);
+
+    /* 
+    JS   怎么创造一个元素？
+     */
+    var span = document.createElement('span');//创造一个span标签
+    console.log(span)
+    /* 
+    怎么给span加上点内容
+     */
+    span.innerHTML = '<h1>hello world</h1>';
+    //  span.innerText = '<h1>你好  中国</h1>';
+    span.style.background = 'blue';
+    span.style.color = 'red';
+    span.style.display = 'block'
+    console.log(span)
+    /* 
+    展示到页面上
+    box.appendChild(span);;把span添加到box 尾部
+
+     */
+    box.appendChild(span);
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="box"></h1>
+</body>
+
+</html>
+<script>
+    /*
+    倒计时
+    用目标时间-当前时间=剩余时间
+    */
+   function f(){
+ //目标时间
+ var target = new Date('2019-8-18 13:00:00').getTime();
+    //当前时间
+    var now = new Date().getTime();
+    //剩余时间
+    time = target - now;//毫秒级的时间
+    //整数个小时
+    var h = parseInt(time / (60 * 60 * 1000))
+
+    time = time - h * 60 * 60 * 1000
+
+    //整数个分钟
+    var m = parseInt(time / (60 * 1000))
+
+    time = time - m * 60 * 1000
+
+    //整数个秒
+    var s = parseInt(time / 1000)
+    var box = document.getElementById('box');
+    box.innerHTML = `距离下课还有${h}:${m}:${s}`
+   }
+   f();
+   var timer=setInterval(function(){
+       f()
+   },1000)
+   
+</script>

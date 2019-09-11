@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    console.log(Math.sqrt(9)) //开方
+    console.log(Math.abs(-2))//  绝对值
+    // console.log(math.pow(4, 3))  //4的三次方
+
+    console.log(Math.floor(3.8)) //3 向下取整
+    console.log(Math.floor(-3.8)) //  -4
+
+    console.log(Math.ceil(3.1))//  4  向上取整
+
+    console.log(Math.max(23, 45, 54, 32, 67, 87, 96))//去一组数中最大的值
+    console.log(Math.min(23, 45, 54, 32, 67, 87, 96))  //取一组数中最小的值
+
+    //怎么求一个数组中的最大值？
+    var ary = [134, 234, 567, 765, 345, 245, 67, 32, 89, 567]
+    //1、 先排序  再取值  sort((a,b)=>b-a)
+    //2、 循环；假设法 假设第一项是最大的  然后循环数组  每一项跟假设出来的最大值相比较  不成立 就把最大值换了
+    var max = ary[0];
+    for (var i = 1; i < ary.length; i++) {
+        // max>ary[i] ? null:max=ary[i];
+        if (max < ary[i]) {
+            max = ary[i]
+        }
+    }
+    console.log(max);
+
+    //es6 的 结构 (...) 结构就理解成  把外边的中括号给去掉
+    console.log(Math.max(...ary))
+    var a = [1, 2], b = [3, 4, 5];
+    var c = [...a, ...b];
+    console.log(c)
+
+    /* 
+    四舍五入 
+    Math.round(3.4)  3
+    Math.round(3.6)  4
+
+    Math.random()  他的值是[0-1]之间的随机小数
+
+     */
+    //求一下  [0-9]之间的随机小数？
+    Math.random() * 9
+
+    //[1-11]之间的小数
+    Math.random * 10 + 1
+    //[n-m]之间的小数
+    // Math.random() * (m - n) + n
+
+
+</script>
