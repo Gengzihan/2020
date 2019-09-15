@@ -21,8 +21,8 @@
 </html>
 <script>
     let box = document.querySelector('#box');
-    let name=document.querySelector('#name');
-    let age=document.querySelector('#age')
+    let name = document.querySelector('#name');
+    let age = document.querySelector('#age')
     let ary = [
         { name: '小明', age: 10 },
         { name: '小明2', age: 20 },
@@ -59,4 +59,15 @@
     // DOM的回流和重绘
     // 只要改动DOM结果 或者 元素的位置； 都会引发DOM回流； 回流：浏览器要重新渲染一边结构
     // 重绘，只是让页面重新渲染一下css样式；比如 改变字体颜色，改变背景图等等
+
+
+
+
+    var x = 10;
+    function fn() {
+        console.log(x);
+        var x = 20;
+    }
+    fn();
+    console.log(x);
 </script>

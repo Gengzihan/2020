@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+</body>
+
+</html>
+<script>
+    /* 
+    *****箭头函数 中没有 this 和 arguments； 它是把这两者当成了普通变量去对待*******
+                箭头函数中的this 是指向了 上级作用域的 this
+    this 就是函数的执行主体 
+
+    事件绑定的this 就是当前绑定的元素
+    自执行函数中的this 是  window(全局)
+    定时器中的this  也是 window
+
+    this指向是谁,我们可以通过看点的方式来确定,函数执行点前是谁,this就是谁,没点就是window;
+                            
+     */
+    var btns = document.querySelectorAll('button');
+    [...btns].forEach(item => {
+        item.onclick = function () {
+            console.log(this)
+            alert(6666)
+        }
+    });
+    (function () {
+        console.log(1, this)
+    })()
+
+
+    setTimeout(function () {
+        console.log(this);//window
+    }, 2000)
+
+    var num = 1;
+    var obj = {
+        num: 10,
+        fn: (function () {
+            this.num *= 3;
+            return function () {
+                num += 2;
+                this.num++;
+            }
+        })()
+    };
+    var f = obj.fn;
+    f();
+    obj.fn();
+    console.log(num, obj.num);
+
+
+    var obj = {
+        name: '珠峰',
+        age: 9
+    };
+    (function (obj) {
+        obj.name = '中国';
+        obj = {};
+        obj.age = 5000;
+        console.log(obj.age);
+    })(obj);
+    console.log(obj.name);
+
+
+
+    var a = {
+        x: 1
+    }
+    var b = a;
+    b.y = a = {
+        qqq: 123
+    }
+    console.log(a.x, b.x)
+
+</script>
