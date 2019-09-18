@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 600px;
+            margin: 30px auto;
+        }
+
+        .tab_box {
+            border: 1px solid rgb(196, 49, 164);
+            display: flex;
+        }
+
+        .tab {
+            flex: 1;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .tab:nth-child(2) {
+            border: 1px solid rgb(9, 211, 52);
+            border-bottom: none;
+            border-top: none;
+
+        }
+
+        .tab.current {
+            /*同时又 tab 和 current者两个类名的元素才会有对应的样式 */
+            background: red;
+            color: rgb(184, 10, 25);
+        }
+
+        .body_box {
+            width: 600px;
+            height: 300px;
+            border: 1px dashed rgb(223, 29, 77);
+            border-top: none;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .body {
+            width: 600px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 50px;
+            display: none;
+        }
+
+        .body.current {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="tab_box">
+            <li class="tab current">css</li>
+            <li class="tab">js</li>
+            <li class="tab">html</li>
+        </ul>
+        <ul class="body_box">
+            <li class="body current">基础</li>
+            <li class="body">基础2</li>
+            <li class="body">基础3</li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    /* 
+    选项卡思路： 点击上边的tab 让下边的body 跟着显示或者隐藏即可；
+    */
+    let btns = document.querySelectorAll('.tab'),
+        bodys = document.querySelectorAll('.body');
+    /*  
+for (let i = 0; i < btns.length; i++) {
+    btns[i].onclick = function () {
+        //给当前元素添加类名； 兄弟移除current 类名
+        //先清除所有的current 再给当前的元素添加
+        for (let j = 0; j < btns.length; j++) {
+            btns[j].classList.remove('current');
+            bodys[j].classList.remove('current');
+        }
+        this.classList.add('current');
+        bodys[i].classList.add('current');
+    }
+}
+*/
+
+    function clearClass() {
+        //清除类名
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].className = 'tab';
+            bodys[i].className = 'body'
+        }
+    }
+    function cli(i) {
+        return function () {
+            clearClass();
+            this.className = 'current tab';
+            bodys[i].className = 'current body';
+        }
+    }
+    for (var i = 0; i < btns.length; i++) {
+        /*  btns[i].onclick = function () {
+             clearClass();
+             this.className = 'current tab';
+             bodys[i].className = 'current body';
+         } */
+        btns[i].onclick = cli(i);
+    }
+</script>
