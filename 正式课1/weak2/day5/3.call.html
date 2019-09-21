@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //call 是改变this 关键字指向的
+    function fn() {
+        console.log(arguments)
+        console.log(this)
+        console.log('--------------------------------');
+    }
+    fn();
+    var ary = [fn];
+    ary[0]();
+    //new 执行 开辟作用域 形参赋值  变量提升 开辟一个堆内存 把this指向改变这个堆内存  代码执行 默认值返回 this
+    fn.call(ary, 1, 2, 3, 2, 4, 3)//fn执行  改变fn 中this的指向  把1,2,3,4传给 fn
+    //call 的第一个参数 是让fn中this 的指向 这个参数
+    //第二个及以后的参数 都是传给 fn 的实参
+    //call 的执行结果就是 fn 的执行结果
+    function myNew(classN, ...arg) {
+        var obj = new Object();
+        obj.__proto__ = classN.prototype;
+        var res = classN.call(obj, ...arg);
+        return typeof res === 'object' ? res : obj;
+    }
+
+    var ary = myNew(Array, 10, 20);
+    console.log(ary);
+
+
+    function myCall(context = window, ...arg) {
+        //context 是改变1上下文的
+        //this ---->  fn
+        // return this(...arg);
+        //context.qqq();
+        /*   context.qqq = this;//context.qqq  === fn
+          var res =  context.qqq(...arg);
+          delete context.qqq;
+          return res */
+
+
+        var a = Symbol();//唯一的不会的一个值
+        context[a] = this;//context.qqq  === fn
+        var res = context[a](...arg);
+        delete context[a];
+        return res
+    }
+    Function.prototype.myCall = myCall;
+    fn.myCall(ary, 6, 6, 6, 6)
+</script>

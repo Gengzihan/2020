@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //类的  继承   封装(高内聚 低耦合) 多态
+
+    function Person(name, age) {
+        Animal.call(this, 10000);//把Animal 中的this 换成当前的实例；把1000传给了Animal
+        this.name = name;
+        this.age = age;
+    }
+
+    //Person.prototype = Animal.prototype;//让Person原型  指向了 Animal的原型
+    // Person.prototype = new Animal();//让 person 的原型指向 了 Animal 的某个实例
+    Person.prototype = Object.create(Animal.prototype);//create 创造了一个空对象，空对象的__proto__ 指向了 Animal的prototype
+
+    Person.prototype.eat = function () {
+        console.log('吃')
+    }
+    function Animal(iq) {
+        this.iq = iq;
+    }
+    Animal.prototype.move = function () {
+        console.log('能动')
+    }
+    Animal.prototype.sleep = function () {
+        console.log('睡觉')
+    }
+    var p1 = new Person('xm', 199);
+    p1.move();
+
+    class parent {
+        constructor() {
+            this.name = 'parent'
+            this.age = 100
+        }
+        say() {
+            console.log('hello parent')
+        }
+    }
+    class Child extends parent {
+        constructor() {
+            super(),//写了 extents 和 constructor  则必写 super() ;super q其实就是 parent 的constructor
+                this.money = 100;
+        }
+        play() {
+            console.log('child play')
+        }
+    }sugar
+    var xm = new Child();
+    console.log(xm);
+</script>

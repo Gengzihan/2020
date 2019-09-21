@@ -21,11 +21,31 @@
     自定义类  
      */
     Array.prototype.pop = function (n = 1) {
-        var temp=[];
-            if (n > this.length){
-                throw new Error('这个代码不对哦')
-                }
+        var temp = [];
+        if (n > this.length) {
+            throw new Error('这个代码不对哦')
+        }
     }
     var ary = [1, 2, 3, 4, 5];
     ary.pop(2)
+
+    //max 数组中的最大值   
+    //双for  循环方式
+    var arr = [6, 4, 1, 8, 2, 11, 23];
+
+    var result = arr[0];
+    for (var i = 1; i < arr.length; i++) {
+        result = Math.max(result, arr[i]);
+    }
+    console.log(result);
+    //排序的方式
+    var arr = [6, 4, 1, 8, 2, 11, 23];
+
+    arr.sort(function (a, b) { return a - b; });
+    console.log(arr[arr.length - 1])
+
+    // average数组的平均值
+    Array.prototype.average = function () {
+        return val(this.join('+')) / this.length
+    }
 </script>
