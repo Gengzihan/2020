@@ -1,4 +1,4 @@
-/* 身体部分 */
+/* 基本样式 */
 html,
 body {
     height: 100%;
@@ -21,6 +21,7 @@ body {
     font-size: 30px;
 }
 
+/* dot 的意思就是 点 的意思，用 dot 来拼成一个爱心的形状  */
 .heart dot {
     background-color: red;
     animation: animate 5s infinite ease-out;

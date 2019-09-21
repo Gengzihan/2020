@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function getType(temp) {
+        console.log(temp.constructor.toString === Function.prototype.toString)
+        var str = temp.constructor.toString();
+        return str.slice(9, str.indexOf('(')).toLowerCase;
+
+    }
+    getType('')//string
+    getType([])//array
+
+    //原型重构   只针对自定义类
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.eat = function () {
+        console.log('吃火锅')
+    }
+    Person.prototype = {
+        eat() {
+            console.log('吃水果')
+        },
+        play() {
+            console.log('玩游戏')
+        }
+    }
+
+    var obj = {
+        name: " 小明",
+        skill: ["css3", "html5", "es6", "react", "angular"],
+        say: function () {
+            for (let i = 0; i < obj.skill.length; i++) {
+                setTimeout(() => {
+                    console.log(`${obj.name}会${obj.skill[i]}`)
+                }, 1000 * (i + 1));
+            }
+        }
+    }
+    obj.say();
+    // 上述函数执行的时候  一秒一输出   小明 会 css3 ； 小明会 html5 ; ....
+
+    function Fn(name, age) {
+          name ? this.name = name : null
+          age ? this.age = age : null;
+      }
+      Fn.prototype.eat = function () {
+          console.log('吃香蕉');
+          console.log(this.name)
+      }
+      var f1 = new Fn('zf', 10);
+      f.eat = function () {
+          console.log('吃苹果');
+          console.log(this.age);
+      }
+      Fn.prototype = f1;
+      var f2 = new Fn('xm');
+      f2.eat()
+      f1.eat();
+      f2.__proto__.eat();
+      f1.__proto__.eat();
+
+
+
+</script>

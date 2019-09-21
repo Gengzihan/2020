@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>百度</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    原型链 ：  属性的查找机制  自已没有 默认通过 __proto__向所属类的原型上查找，若没有的话 可以一直查找到基类的原型上
+    作用域链  变量的查找机制  
+
+    自定义类  
+     */
+    Array.prototype.pop = function (n = 1) {
+        var temp=[];
+            if (n > this.length){
+                throw new Error('这个代码不对哦')
+                }
+    }
+    var ary = [1, 2, 3, 4, 5];
+    ary.pop(2)
+</script>

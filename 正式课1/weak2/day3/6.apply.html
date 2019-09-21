@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //apply 功能  类似于 call
+    function fn() {
+        console.log([...arguments])
+        console.log(this)
+        console.log('---------------------')
+    }
+    var obj = {
+        a: 12,
+        b: 13
+    }
+    fn.call(obj, 5, 6, 7, 8);
+    fn.apply(obj, [5, 6, 7, 8, 9]);//第二个参数是个数组或者类数组的集合；虽然是以一个集合的形势传过去的；但是 fn接收时 还是散乱接收的
+
+    //实现一个 myApply 的方法； 功能等同于 apply
+    fn.myApply(obj,[5,6,7,8])
+</script>

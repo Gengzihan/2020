@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //假设法
+    var ary = [123, 456, 8, 97, 83, 4, 2, 43, 45, 56, 5, 768, 96];
+    Math.max(...ary);
+    Math.max.apply(Math, ary);//利用了 apply 可以把集合散乱的传给前边的函数
+
+    ary.sort((a, b) => b - a)[0];
+
+
+</script>
