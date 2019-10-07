@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //反转成大小写
+    var str = 'wefdsvfWDSFefWEFD';
+    var str2 = '';
+    for (var i = 0; i < str.length; i++) {
+        let a = str[i];
+        if (a.toLowerCase() === a) {
+            //说变量 a对应的字符是一个小写字母
+            str2 += a.toUpperCase();//toUpperCase( ) 把字母转化成大写
+        } else {
+            str2 += a.toLowerCase();//toLowerCase()   把字母转化成小写
+        }
+    }
+    console.log(str, str2)
+
+    //正则的写法
+    var str = 'WefdsvAfSFefW';
+    var res = str.replace(/[a-zA-Z]/g, function ($1) {
+        if ($1.toLowerCase() === $1) {
+            return $1.toUpperCase()
+        }
+        return $1.toLowerCase()
+    })
+    console.log(res, 999)
+
+
+
+    //第一种写法
+    var res = str.replace(/[a-zA-Z]/g, function ($1) {
+        if ($1.toLowerCase() == $1) {
+            return $1.toUpperCase()
+        }
+        return $1.toLowerCase()
+    })
+    console.log(res, 666);
+
+    //第二种写法
+    var str = 'aqweAVsdDFEc';
+    var res = str.replace(/([a-z]*)([A-Z]*)/g, function ($0, $1, $2) {
+        return $1.toUpperCase() + $2.toLowerCase()
+    })
+    console.log(res, 1111);
+
+
+    //第三种写法
+    var str2 = '';
+    for (var i = 0; i < str.length; i++) {
+        let a = str[i];
+        if (a.toLowerCase() == a) {
+            // 说变量a对应的字符是一个小写字母
+            str2 += a.toUpperCase(); // toUpperCase()  把字母转成大写
+        } else {
+            str2 += a.toLowerCase(); // toLowerCase()  把字母转成小写
+        }
+    }
+    console.log(str, str2)
+
+
+    //小写数字转 大写繁体
+    var str = '今年是2019年';
+    //var ary = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖', '拾'];
+    str.replace(/\d/g, function (n) {
+        return ary[n]
+    })
+</script>

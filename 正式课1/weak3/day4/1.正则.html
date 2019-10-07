@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    正则： 正则是专门用于处理字符串的一种规则
+        匹配·test    ：写一个正则 然后看某个字符串是否满足你编写的规则
+        捕获  exec   ：写一个正则 把字符串中符合正则的部分捕获到
+
+        正则的书写方式： 
+        字面量方式 ： var reg =//
+        构造函数   ： var reg = new RegExp('-','gim)
+    正则是由元字符 修饰符 组成：
+
+    特殊元字符 
+    \       :转义
+    \d      :0到9
+
+     */
+
+    // 00:00  01:23   23:59      00 - 23  00 - 59
+    var reg = /^([01]\d|2[0-3])\:([0-5]\d)$/
+
+    //邮箱 不是横杠开头5-16位@只能数字 字母  下划线.(com或者 cn 或者 net)
+    var reg = /^[^ -,.\n]{5,16}\@(\w{2,5}\.)?\w{2,5}\.(com|cn|net)$/
+
+    //QQ·
+    var reg = /^[^0]\d{4,10}$/;
+
+</script>

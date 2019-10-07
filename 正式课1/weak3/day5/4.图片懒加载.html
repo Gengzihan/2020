@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            padding-top: 2000px;
+            background: aqua;
+        }
+
+        #img {
+            border: 1px solid rgb(236, 6, 44);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img id="img" src="./757.jpg" alt="">
+    </div>
+</body>
+
+</html>
+<script src="./utils.js"></script>
+<script>
+    //图片 露出一半的时候 把图片的地址换成真实地址 显示真实图片 其他时候是默认图片
+    //屏幕底边 到 body的偏移量 changeT 跟元素顶边到 body的偏移量 t 进行对比
+    //当前 changeT > t   说明元素的顶边已经露出来了
+    //当前 changeT > t +h/2(他高度的一半)  说明元素的顶边已经露出来了
+    var img = document.getElementById('img');
+    let flag = false;
+    window.onscroll = function () {
+        loadImg(img)
+    }
+    function loadImg(ele) {
+        if (ele.flag) return
+        let scT = document.body.scrollTop || document.documentElement.scrollTop;
+        let wH = utils.winH().h;//一屏幕的高度
+        let t = utils.offset(ele).t;//当前元素到 body 的偏移量
+        let h = ele.clientHeight;
+        if (scT + wH > t + h / 2) {
+            //说明图片已经露出一半
+            console.log(666);
+            ele.flag = true;
+            // ele.src = 'https://image5.suning.cn/uimg/nmps/MBLSPZT/10033971910588774479picH_1_200x200.jpg';
+            let temp = new Image();
+            temp.src = 'https://image5.suning.cn/uimg/nmps/MBLSPZT/10033971910588774479picH_1_200x200.jpg';
+            temp.onload = function () {
+                ///这张图片加载完成之后 会触发该函数
+                ele.src = 'https://image5.suning.cn/uimg/nmps/MBLSPZT/10033971910588774479picH_1_200x200.jpg';
+                temp = null;
+            }
+        }
+    }
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+
+    //一个字符串出现次数最多的字符
+    var str = 'wojiazhuzaihuangtugaopo';
+    function getMax(str) {
+        //双for
+        function gexMax(str) {
+            let obj = {};
+            for (let i = 0; i < str.length; i++) {
+                let t = str[i];
+                if (obj.hasOwnProperty(t)) {
+                    obj[t] += 1
+                } else {
+                    obj[t] = 1
+                }
+            }
+        }
+        console.log(obj);
+        let key = '', num = 0;
+        for (var k in obj) {
+            if (obj[k] > num) {
+                key = k;
+                num = obj[k];
+            }
+        }
+        return {
+            key, num
+        }
+    }
+    gexMax(str);
+</script>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //一个字符串出现次数最多的字符
+    // var str = 'wojiazhuzaihuangtugaopo';
+    // function getMax(str) {
+    //     //双for
+    //     function gexMax(str) {
+    //         let obj = {};
+    //         for (let i = 0; i < str.length; i++) {
+    //             let t = str[i];
+    //             if (obj.hasOwnProperty(t)) {
+    //                 obj[t] += 1
+    //             } else {
+    //                 obj[t] = 1
+    //             }
+    //         }
+    //     }
+    //     console.log(obj);
+    //     let key = '', num = 0;
+    //     for (var k in obj) {
+    //         if (obj[k] > num) {
+    //             key = k;
+    //             num = obj[k];
+    //         }
+    //     }
+    //     return {
+    //         key, num
+    //     }
+    // }
+    // gexMax(str);
+
+
+
+    var str = 'gfsdfgergbxbsrhfgbsfgwrgxcbsrdfg';
+    function getMax3(str) {
+        str = str.split('').sort().join(''); // qqqqqddddddttttxxxnnnw
+        let reg = /(\w)\1*/g;
+        let s = '', n = 0;
+        str.replace(reg, function (a, b) {
+            if (a.length > n) {
+                n = a.length;
+                s = b;
+            }
+        })
+        return {
+            key: s,
+            val: n
+        }
+    }
+    getMax3(str);
+
+
+    //模板引擎
+    var str = '姓名是：{{name}},年龄是：{{age}},性别是：{{sex}}';
+    var data = {
+        name: '小明',
+        age: 10,
+        sex: '男'
+    }
+    function formate(template, data) {
+        let reg = /\{(\w+)\}\}/g;
+        return template.replace(reg, function (a, b) {
+            return data[b]
+        })
+    }
+    var str = '今天是{{year}}年{{month}}月{{data}}日';
+    function formateTime(str) {
+        let time = new Date();
+        let year = time.getFullYear();
+        let month = time.getMonth();
+        let data = time.getDate();
+        let reg = /\{\{(\w+)\}\}/g;
+        return str.replace(reg, function (a, b) {
+            return eval(b)
+        })
+    }
+    formateTime(str);
+
+
+    //千分符的实现
+    function formateMoney(str) {
+        str = str.split('').reverse().join('');
+        let s = '';
+        for (let i = 0; i < str.length; i++) {
+            if (i % 3 == 2) {
+                s += str[i] + ','
+            } else {
+                s += str[i]
+            }
+        }
+        s = s.split('').reverse().join('')
+        return s.replace(/^,/, '')
+    }
+    var str = '123456'
+
+    function formateMoney2(str) {
+        var reg = /(\d{1,3})(?=(\d{3})+$)/g; 
+        return str.replace(reg, '$1,')
+    }
+
+</script>

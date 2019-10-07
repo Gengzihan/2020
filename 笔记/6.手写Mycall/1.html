@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //手写  Mycall  的方法
+    function myCall(context = window, ...arg) {
+        var a = Symbol();//唯一的不会的一个值
+        context[a] = this;//context.qqq  === fn
+        var res = context[a](...arg);
+        delete context[a];
+        return res
+    }
+    Function.prototype.myCall = myCall;
+    fn.myCall(ary, 6, 6, 6, 6)
+
+    //手写Mycall 
+    Function.prototype.mycall = function mycall(context, ...arg) {
+        context.qqq = this;
+        context.qqq();
+        delete context.qqq;
+    }
+    fn.mycall(obj, 6, 6, 6);
+
+</script>

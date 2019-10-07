@@ -51,7 +51,7 @@
 
 
         var a = Symbol();//唯一的不会的一个值
-        context[a] = this;//context.qqq  === fn
+        context[a] = this;//context.qqq  === fn 
         var res = context[a](...arg);
         delete context[a];
         return res

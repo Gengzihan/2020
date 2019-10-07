@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var str = 'wqdsvgdhdsfsgdvsfdsrdfgmngff';
+    function getMax(str) {
+        //排序
+        str = str.split('').sort().join('');//字符串进行排序
+        console.log(str)
+        var arr = str.match(/(\w)\1*/g);//获取相同自符组成的数组
+        arr.sort((a, b) => {
+            return b.length - a.length;
+        })//数组排序  第一项就是 字符串最长的
+        return {
+            key: arr[0][0],
+            num: arr[0].length
+        }
+    }
+    getMax(str);
+</script>

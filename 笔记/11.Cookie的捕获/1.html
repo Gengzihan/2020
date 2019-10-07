@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //cookie  的捕获
+    function getCookie() {
+        var reg = /([^ ;=]+)=([^ ;=]+)/g;
+        var ary = reg.execAll(document.cookie);
+        console.log(ary);
+        var obj = {};
+        ary.forEach(a => {
+            obj[a[1]] = a[2]
+        });
+        return obj;
+    }
+    getCookie();
+</script>

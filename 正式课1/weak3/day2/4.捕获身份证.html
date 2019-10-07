@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="身份证" id="inp">
+    <button id="btn">解析</button>
+    <h2 id="box">这个💗的出生年月日1990年03月09日 性别是男</h2>
+</body>
+
+</html>
+<script>
+    btn.onclick = function () {
+        let str = inp.value
+        let reg = /^\d{6}(\d{4})(\d{2})(\d{2})\d{2}(\d)(\d|X)$/
+        let res = reg.exec(str);//若输出的身份证不合法； 则 res 是一个null
+        if (res) {
+            //res 的第一项是 大正则捕获的内容
+            box.innerHTML = `这个❤的出生年月日${res[1]}年${res[2]}月${[3]}日 性别是${res[4] % 2 ? '男' : '女'}`;
+        } else {
+            alert('你写滴么啊,不对')
+        }
+    }
+
+
+    Object.prototype.getType = function () {
+        //Object.prototype.toString.call()
+        let str =({}).toString.call(this);//'[object Number]'
+        let reg =/[a-z]+/ig;
+        reg.test(str);
+        return reg.exec(str)[0].toLocaleLowerCase()
+        }
+    ''.getType();//string
+    [].getType();//array
+</script>

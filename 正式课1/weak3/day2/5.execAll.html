@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    RegExp.prototype.execAll = function (str) {
+        //一直用exec捕获  啥时候结果是null  啥时候就停止捕获
+        //先用一个变量 接收 exec 的结果
+        //当这个结果存在 就是把这结果放到一个
+        let res = this.exec(str);
+        let ary = [];
+        while (res) {
+            ary.push(res);
+            res = this.exec(str)
+        }
+        return ary;
+    }
+    
+    var str = '珠峰2019培训2020'
+    var reg = /\d+/g;
+    var res = reg.execAll(str);
+    console.log(res)
+</script>
