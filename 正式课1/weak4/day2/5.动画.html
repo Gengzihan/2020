@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid yellow;
+            text-align: center;
+            line-height: 200px;
+            user-select: none;
+            position: relative;
+            color: red;
+            left: 0;
+            transition: left 1s  ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点击我</button>
+    <div id="box">
+        你好
+    </div>
+</body>
+
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    //getComputedstyle(元素)
+    //IE低版本使用元素  currentstyle
+    //监听窗口大小的改变  我们使用 window.onresize
+    var box = document.getElementById('box');
+    let l = 0;
+    let w = document.documentElement.clientWidth || document.body.clientWidth;//一屏幕的宽度
+    let boxW = box.offsetWidth;//盒子的宽度
+    let maxL = w - boxW;//可移动最大值
+    /* let timer = setInterval(() => {
+        l += 10;
+        if (l >= maxL) {
+            l = maxL;
+            clearInterval(timer)
+        }
+        box.style.left = l + 'px';
+    }, 10);
+ */
+    function fn() {
+        l += 10;
+        if (l >= maxL) {
+            l = maxL;
+        } else {
+            setTimeout(() => {
+                fn()
+            }, 10);
+        }
+        box.style.left = 1 + 'px';
+    }
+    //fn();
+    btn.onclick = function () {
+        box.style.left = maxL + 'px';
+    }
+
+</script>

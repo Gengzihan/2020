@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /*
+    1、获取数据  封装一个函数 去实现获取数据的操作
+        2、渲染数据  把从后台获取到的数据展示到页面上 按照列来表示的
+                    循环后台给的数据 然后把每一条数据拼接好 添加到长度最小的那一列
+                    这里封装了一个获取长度最小的列的方法 getMinLi
+                    把元素集合转成数组 然后按照clientHeight进行排序 由此找到最低的那个li
+        3、滚动加载更多 当长度最小的那个li的底部漏出来时 我们就去加载新的数据 loadMore
+           为了防止一次性请求多次 我们做了一个flag的判断 只有当flag为false的时候 才去执行新数据的请求
+           当请求开始的时候 我们把flag置为true 渲染成功之后我们再把flag置为false
+        4、再加上图片懒加载的操作 懒加载就是当图片还没有出现到可视窗口的时候 不去加载图片 
+        只有当图片露出来的时候我们才去加载
+ 
+        预加载  就是 当图片要展示成真正的图片时，先用默认图展示 然后再利用JS创建一个临时的图片，让着图片去远程请求 真正的图片，当请求成功之后，再把这个真实图片的地址赋给页面上那个img 标签
+
+        5、实现图片的渐显 fadein 利用定时器 对 img进行 opacity的累加操作
+    */
+</script>

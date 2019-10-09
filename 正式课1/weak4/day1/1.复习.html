@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <input type="text" id="inp">
 </body>
+
 </html>
+<!-- <script>
+    let n = 0;
+    inp.oninput = function () {
+        let str = this.value;
+        if (str.length >= n) {
+            n = str.length
+        } else {
+            return;
+        }
+        if (str.length == 3 || str.length == 8) {
+            str = str + '';
+        }
+        if (str.length >= 13) {
+            str = str.slice(0, 19)
+        }
+        this.value = str
+    }
+
+</script> -->
 <script>
-    /* 
-    正则 
+    /*
+    正则
     var reg = /\d/
     var reg = new PegExp('\\d','g');
 
     匹配 test
     捕获 exec
-
-    
+    一个需要梦想 需要
      */
+
+    var str = '这个人的身份证号是51343620001007794X';
+    var reg = / \d{6}(\d{4})(\d{2})(\d(2})\d{4} /
+
+    console
 </script>

@@ -24,6 +24,22 @@
     var ary = mynew(Array, 10, 20);
     console.log(ary)
 
+    //match
+    var str = '55043219980818243X';
+    var reg = /^\d{6}(\d{4})(\d{2})(\d{2})\d{2}(\d)[\dX]$/;
+    console.log(reg.exec(str))
+    console.log(str.match(reg))
 
-    
+
+    var x = 4;
+    function func() {
+        return function (y) {
+            console.log(y + x++);
+        }
+    }
+    var f = func(5);
+    f(6);
+    func(7)(8);
+    f(9);
+    console.log(x);
 </script>
