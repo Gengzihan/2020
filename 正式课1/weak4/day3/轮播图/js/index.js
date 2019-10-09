@@ -34,7 +34,7 @@ function render(data) {
 
 let n = 0;
 setInterval(() => {
-    n++;
+    n++;dfh
     if(n==4){
         n=0
     }
