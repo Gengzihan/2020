@@ -107,7 +107,9 @@ img {
     border-radius: 50%;
     cursor: pointer;
 }
-
+.tip_box .tip.current{
+    background: rgb(8, 40, 223);
+}
 .btn_box {
     position: absolute;
     width: 100%;

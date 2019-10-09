@@ -42,4 +42,58 @@
     func(7)(8);
     f(9);
     console.log(x);
+
+
+    let res = parseInt('200px');
+    if (res === 200) {
+        alert(200);
+    } else if (res === NaN) {
+        alert(NaN);
+    } else if (typeof res === 'number') {
+        alert('number');
+    } else {
+        alert('Invalid Number');
+    }
+
+    var x = 4;
+    function func() {
+        return function (y) {
+            console.log(y + x++);
+        }
+    }
+    var f = func(5);
+    f(6);
+    func(7)(8);
+    f(9);
+    console.log(x);
+
+
+    function Fn() {
+        this.x = 10;
+        this.y = 20;
+        this.getx = function () {
+            console.Log(this.x);
+        }
+    }
+    Fn.prototype.y = 40;
+    Fn.prototype = {
+        x: 30,
+        getY: function () {
+            this.y += l;
+            console.Log(this.y);
+        },
+        sum: function () {
+            console.Log(this.x + this.y);
+        }
+    };
+    // let f1 = new Fn;
+    // let f2 = new Fn;
+    console.log(fl.getX === f2.getX); //报错
+    console.log(f1.getY === f2.getY);
+    console.log(fl.constructor);
+    f1.getx();
+    f2.getY();
+    f1.sum();
+
+
 </script>
