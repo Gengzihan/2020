@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li {
+            height: 50px;
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>1 骑上我心爱的小摩托</li>
+        <li>2 超过拥挤的公交车 </li>
+        <li>3 骑上我心爱的小摩托</li>
+        <li>4 我心里唱起歌</li>
+        <li>5 他的车轮就像一双翅膀</li>
+        <li>6 骑上我心爱的小摩托</li>
+        <li>7 它永远不会堵车</li>
+        <li>8 嘟嘟嘟嘟嘟嘟</li>
+        <li>9 骑上我心爱的小摩托</li>
+        <li>10 它马上就到家了</li>
+    </ul>
+</body>
+
+</html>
+<script>
+    // 事件委托  利用的 就是事件的冒泡传播机制
+    var ul = document.getElementById('ul');
+    ul.onclick = function (e) {
+        e = e || window.event;
+        var tar = e.target || e.srcElement;
+        console.log(tar);
+        if (tar.nodeName.toLowerCase() !== 'li') return;
+        alert(tar.innerText)
+    }
+</script>

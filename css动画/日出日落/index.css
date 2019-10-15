@@ -1,0 +1,375 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --sea-height: 0.3;
+    --x: 0.5;
+    --y: 0.5;
+    --lightness: 31.1111;
+    --sea-lightness: 22.2222;
+    --sun-spread: 0.375;
+    --ripple-opacity: 0.333333;
+    --ripple-scale: 0.333333;
+    --moon-offset: 0;
+    --mouth-opening: 0.2;
+    --shade-position: -200;
+    --flip: 1;
+}
+
+body {
+    background-color: hsl(194, 100%, calc(var(--lightness, 50) * 1%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    cursor: none;
+}
+
+.moon {
+    /* 月亮 */
+    --face-color: #fff;
+    height: 20vh;
+    width: 20vh;
+    background: var(--face-color);
+    border-radius: 100%;
+    position: absolute;
+    bottom: 100%;
+    left: calc(var(--x, 0.5) * 100%);
+    overflow: hidden;
+    transition: -webkit-transform 0.25s ease 0s;
+    transition: transform 0.25s ease 0s;
+    transition: transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s;
+    -webkit-transform: translate(-50%, calc(var(--moon-offset) * 1vh));
+    transform: translate(-50%, calc(var(--moon-offset) * 1vh));
+}
+
+.sea {
+    /* 大海  底部的海 */
+    width: 100vw;
+    position: absolute;
+    top: calc((1 - var(--sea-height)) * 100vh);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsl(215, 100%, calc(var(--sea-lightness) * 1%));
+}
+
+.sea__ripples {
+    /* 海面上的波纹 */
+    width: 15vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--x, 0.5) * 100%);
+    height: calc(var(--sea-height) * 100vh);
+    -webkit-transform: translate(-50%, 0) scaleX(var(--ripple-scale));
+    transform: translate(-50%, 0) scaleX(var(--ripple-scale));
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
+    opacity: var(--ripple-opacity);
+}
+
+.sea__ripple {
+    width: 100%;
+    height: 10%;
+    background: #ffa500;
+    position: absolute;
+    border-radius: 100%;
+    -webkit-animation: ripple 20s calc(var(--ripple-index) * -1s) infinite linear both;
+    animation: ripple 20s calc(var(--ripple-index) * -1s) infinite linear both;
+}
+
+.sun {
+    /* 太阳 */
+    --face-color: #ff0;
+    height: 20vh;
+    width: 20vh;
+    position: absolute;
+    top: calc(var(--y, 0.5) * 100%);
+    left: calc(var(--x, 0.5) * 100%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    background: #ffa500;
+}
+
+.sun__rays {
+    height: calc((100 + (var(--sun-spread) * 100)) * 1%);
+    width: calc((100 + (var(--sun-spread) * 100)) * 1%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%;
+    overflow: hidden;
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
+    -webkit-animation: spin calc((20 - (var(--sun-spread) * 10)) * 1s) infinite linear;
+    animation: spin calc((20 - (var(--sun-spread) * 10)) * 1s) infinite linear;
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.sun__ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #ffa500;
+    height: 100%;
+    width: 500%;
+    display: block;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    -webkit-transform: rotate(calc((var(--ray-index) * (360 / 20)) * 1deg));
+    transform: rotate(calc((var(--ray-index) * (360 / 20)) * 1deg));
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+}
+
+/**
+  * Shared face styles
+  */
+.face {
+    background: var(--face-color);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotateY(calc(var(--flip, 0) * 180deg));
+    transform: translate(-50%, -50%) rotateY(calc(var(--flip, 0) * 180deg));
+}
+
+.mouth {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    height: 40%;
+    width: 30%;
+    -webkit-transform: translate(-50%, -50%) rotate(-5deg);
+    transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.lip {
+    background: var(--face-color);
+    position: absolute;
+    height: 100%;
+    width: 120%;
+    border-radius: 100%;
+    left: 50%;
+    top: -40%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.mouth-opening {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #111;
+    border-radius: 100%;
+    left: 50%;
+    top: 0%;
+    -webkit-transform: translate(-50%, -50%) translate(0, calc((var(--mouth-opening) + 0.075) * -100%));
+    transform: translate(-50%, -50%) translate(0, calc((var(--mouth-opening) + 0.075) * -100%));
+    overflow: hidden;
+}
+
+.mouth-opening:after {
+    content: '';
+    position: absolute;
+    background: #f00;
+    top: 80%;
+    left: 70%;
+    height: 30%;
+    width: 30%;
+    border-radius: 100%;
+}
+
+.eyes {
+    height: 25%;
+    width: 50%;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    -webkit-transform: translate(-50%, 0) rotate(-5deg);
+    transform: translate(-50%, 0) rotate(-5deg);
+    z-index: 2;
+}
+
+.eye {
+    height: 100%;
+    width: 50%;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.eye:nth-of-type(1) {
+    left: 0%;
+}
+
+.eye:nth-of-type(2) {
+    right: 0%;
+}
+
+.eye-pupil {
+    height: 25%;
+    width: 25%;
+    background: #111;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    -webkit-animation: blink 10s infinite;
+    animation: blink 10s infinite;
+}
+
+@-webkit-keyframes blink {
+
+    0%,
+    73%,
+    75%,
+    100% {
+        -webkit-transform: translate(-50%, -50%) scaleY(1);
+        transform: translate(-50%, -50%) scaleY(1);
+    }
+
+    74% {
+        -webkit-transform: translate(-50%, -50%) scaleY(0.1);
+        transform: translate(-50%, -50%) scaleY(0.1);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    73%,
+    75%,
+    100% {
+        -webkit-transform: translate(-50%, -50%) scaleY(1);
+        transform: translate(-50%, -50%) scaleY(1);
+    }
+
+    74% {
+        -webkit-transform: translate(-50%, -50%) scaleY(0.1);
+        transform: translate(-50%, -50%) scaleY(0.1);
+    }
+}
+
+.moon .face {
+    top: 60%;
+    background: transparent;
+}
+
+.moon .face:after {
+    content: '';
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    top: -10%;
+    left: -20%;
+    border-radius: 100%;
+    background-color: #bfbfbf;
+    box-shadow: 0 0 2px 4px #999 inset;
+}
+
+.moon .face:before {
+    content: '';
+    height: 20%;
+    width: 20%;
+    position: absolute;
+    top: 60%;
+    left: 70%;
+    border-radius: 100%;
+    background-color: #bfbfbf;
+    box-shadow: 0 0 2px 4px #999 inset;
+}
+
+.shades {
+    width: 100%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    transition: opacity 0.25s ease, -webkit-transform 0.25s ease;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transition: transform 0.25s ease, opacity 0.25s ease, -webkit-transform 0.25s ease;
+    -webkit-transform: translate(calc(var(--shade-position) * 0.15vw), 0);
+    transform: translate(calc(var(--shade-position) * 0.15vw), 0);
+    opacity: calc(1 + var(--shade-position));
+}
+
+.shades-lens {
+    width: 50%;
+    height: 100%;
+    background: #000;
+    position: absolute;
+    top: 0;
+    opacity: 0.85;
+    border: 4px solid #000;
+    border-radius: 20% 20% 50% 35%/20% 20% 75% 60%;
+}
+
+.shades-lens:nth-of-type(1) {
+    left: 0;
+    overflow: hidden;
+}
+
+.shades-lens:nth-of-type(1):after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, #fff, #fff 25%, transparent 25%, transparent 45%, #fff 45%);
+    -webkit-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+
+.shades-lens:nth-of-type(2) {
+    right: 0;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+@-webkit-keyframes ripple {
+    from {
+        -webkit-transform: translate(0, -5vh) scale(1);
+        transform: translate(0, -5vh) scale(1);
+    }
+
+    to {
+        -webkit-transform: translate(0, 35vh) scale(1);
+        transform: translate(0, 35vh) scale(1);
+    }
+}
+
+@keyframes ripple {
+    from {
+        -webkit-transform: translate(0, -5vh) scale(1);
+        transform: translate(0, -5vh) scale(1);
+    }
+
+    to {
+        -webkit-transform: translate(0, 35vh) scale(1);
+        transform: translate(0, 35vh) scale(1);
+    }
+}

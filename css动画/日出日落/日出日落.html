@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="moon"> 
+        <div class="face">
+            <div class="eyes">
+                <div class="eye">
+                    <div class="eye-pupil"></div>
+                </div>
+                <div class="eye">
+                    <div class="eye-pupil"></div>
+                </div>
+                <div class="shades">
+                    <div class="shades-lens"></div>
+                    <div class="shades-lens"></div>
+                    <div class="shades-arm"></div>
+                </div>
+            </div>
+            <div class="mouth">
+                <div class="mouth-opening"></div>
+                <div class="lip"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sun">
+        <div class="sun__rays">
+            <div class="sun__ray" style="--ray-index: 0;"></div>
+            <div class="sun__ray" style="--ray-index: 2;"></div>
+            <div class="sun__ray" style="--ray-index: 4;"></div>
+            <div class="sun__ray" style="--ray-index: 6;"></div>
+            <div class="sun__ray" style="--ray-index: 8;"></div>
+            <div class="sun__ray" style="--ray-index: 10;"></div>
+            <div class="sun__ray" style="--ray-index: 12;"></div>
+            <div class="sun__ray" style="--ray-index: 14;"></div>
+            <div class="sun__ray" style="--ray-index: 16;"></div>
+            <div class="sun__ray" style="--ray-index: 18;"></div>
+        </div>
+        <div class="face">
+            <div class="eyes">
+                <div class="eye">
+                    <div class="eye-pupil"></div>
+                </div>
+                <div class="eye">
+                    <div class="eye-pupil"></div>
+                </div>
+                <div class="shades">
+                    <div class="shades-lens"></div>
+                    <div class="shades-lens"></div>
+                    <div class="shades-arm"></div>
+                </div>
+            </div>
+            <div class="mouth">
+                <div class="mouth-opening"></div>
+                <div class="lip"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sea">
+        <div class="sea__ripples">
+            <div class="sea__ripple" style="--ripple-index: 0;"></div>
+            <div class="sea__ripple" style="--ripple-index: 1;"></div>
+            <div class="sea__ripple" style="--ripple-index: 2;"></div>
+            <div class="sea__ripple" style="--ripple-index: 3;"></div>
+            <div class="sea__ripple" style="--ripple-index: 4;"></div>
+            <div class="sea__ripple" style="--ripple-index: 5;"></div>
+            <div class="sea__ripple" style="--ripple-index: 6;"></div>
+            <div class="sea__ripple" style="--ripple-index: 7;"></div>
+            <div class="sea__ripple" style="--ripple-index: 8;"></div>
+            <div class="sea__ripple" style="--ripple-index: 9;"></div>
+            <div class="sea__ripple" style="--ripple-index: 10;"></div>
+            <div class="sea__ripple" style="--ripple-index: 11;"></div>
+            <div class="sea__ripple" style="--ripple-index: 12;"></div>
+            <div class="sea__ripple" style="--ripple-index: 13;"></div>
+            <div class="sea__ripple" style="--ripple-index: 14;"></div>
+            <div class="sea__ripple" style="--ripple-index: 15;"></div>
+            <div class="sea__ripple" style="--ripple-index: 16;"></div>
+            <div class="sea__ripple" style="--ripple-index: 17;"></div>
+            <div class="sea__ripple" style="--ripple-index: 18;"></div>
+            <div class="sea__ripple" style="--ripple-index: 19;"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    const MIN_LIGHTNESS = 0
+    const MAX_LIGHTNESS = 70
+    const MAX_SEA_LIGHTNESS = 50
+    const BOTTOM_BUFFER = 0.1
+    const SEA_HEIGHT = 0.3
+    const SUN_HEIGHT = 0.2
+    const RIPPLE_BOUNDARY = 1 - SEA_HEIGHT - SUN_HEIGHT / 2
+    const updatePosition = e => {
+        const { clientX: x, clientY: y } =
+            e.touches && e.touches.length ? e.touches[0] : e
+        // Set the sun/moon/ripple position
+        const positionX = x / window.innerWidth
+        const positionY = y / window.innerHeight
+        document.documentElement.style.setProperty('--x', positionX)
+        document.documentElement.style.setProperty('--y', positionY)
+        /**
+         * On change calculate the following things
+         * 1. Darkness of sea and sky
+         * 2. Spread and blur of the sun
+         * 3. Ripple scale
+         * 4. Ripple speed
+         * 5. Whether sun brings out his shades
+         * 6. Moon position?
+         */
+        /**
+         * Calculate the darkness of the sea and sky
+         * We say the lightness can go between 10% and 70%
+         */
+        let lightness = MIN_LIGHTNESS
+        let seaLightness = MIN_LIGHTNESS
+        if (positionY < 1 - BOTTOM_BUFFER) {
+            lightness =
+                (1 - positionY / (1 - BOTTOM_BUFFER)) * (MAX_LIGHTNESS - MIN_LIGHTNESS) +
+                MIN_LIGHTNESS
+            seaLightness =
+                (1 - positionY / (1 - BOTTOM_BUFFER)) *
+                (MAX_SEA_LIGHTNESS - MIN_LIGHTNESS) +
+                MIN_LIGHTNESS
+        }
+        document.documentElement.style.setProperty('--lightness', lightness)
+        document.documentElement.style.setProperty('--sea-lightness', seaLightness)
+        /**
+         * Spread and blur of the sun
+         * Shouldn't start growing until we at sea height plus half the sun height
+         *
+         */
+        let radius = 0
+        const boundary = 1 - SEA_HEIGHT + SUN_HEIGHT / 2
+        if (positionY <= boundary) radius = 1 - positionY / boundary
+        document.documentElement.style.setProperty('--sun-spread', radius)
+        /**
+         * Calculate the ripple scale and opacity
+         * To start out with it's not seen and the scaleX is 0
+         */
+        let opacity = 0
+        let scale = 0
+        if (positionY <= RIPPLE_BOUNDARY) {
+            opacity = scale = Math.min(
+                1,
+                1 - (positionY - 0.3) / (RIPPLE_BOUNDARY - 0.3)
+            )
+        }
+        document.documentElement.style.setProperty('--ripple-opacity', opacity)
+        document.documentElement.style.setProperty('--ripple-scale', scale)
+        /**
+         * Gently open eyes and mouth
+         * Use scaleX on both. Eyes can always be in blinking mode?
+         */
+        /**
+         * If y position is above 0.9 bring the moon out
+         * Else put him away
+         */
+        let moonOffset = 0
+        if (positionY > 0.9) moonOffset = 15
+        document.documentElement.style.setProperty('--moon-offset', moonOffset)
+        /**
+         * Figure out mouth translation
+         * Start at 0.3, translate down to 0
+         */
+        let mouthOpening = 0.2
+        if (positionY <= RIPPLE_BOUNDARY) {
+            mouthOpening = Math.min(
+                0.2,
+                Math.max(0, (positionY - 0.3) / (RIPPLE_BOUNDARY - 0.3))
+            )
+        }
+        document.documentElement.style.setProperty('--mouth-opening', mouthOpening)
+        /**
+         * Control the shades
+         * If y is above 0.4 put them away else
+         * show them
+         */
+        let shadePosition = -200
+        if (positionY > 0.4) {
+            shadePosition = -200
+        } else {
+            shadePosition = 0
+        }
+        document.documentElement.style.setProperty('--shade-position', shadePosition)
+        /**
+         * Flip the faces if the xPosition is aove 0.5
+         */
+        let flipY = 0
+        if (positionX <= 0.5) {
+            flipY = 1
+        }
+        document.documentElement.style.setProperty('--flip', flipY)
+    }
+    window.addEventListener('touchmove', updatePosition)
+    window.addEventListener('mousemove', updatePosition)
+
+    updatePosition({
+        clientX: window.innerWidth / 2,
+        clientY: window.innerHeight / 2,
+    })
+
+</script>
