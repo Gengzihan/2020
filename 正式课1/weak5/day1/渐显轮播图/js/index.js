@@ -9,6 +9,18 @@ var banner = (function () {
         $rightBtn = null;
     var n = 0,
         timer = null; // n 控制了全局图片对应的索引   
+    function throttle(fn, wait = 500) {
+        let flag = true;
+        return function () {
+            if (!flag) return;
+            flag = false;
+            setTimeout(() => {
+                flag = true;
+                fn.apply(this, arguments)
+            }, wait);
+        }
+    }
+
     function initEle() {
         $box = $(idSelector);
         $ul = $box.find('.img_box ul'),
@@ -22,13 +34,14 @@ var banner = (function () {
     }
 
     function getData() {
-        $url.ajax({
+        $.ajax({
             url: './data.json',
             success: function (data) {
                 //
                 render(data);
                 initEle();
                 autoMove();
+                eventBind();
             },
             error: function () {
                 alert('失败')
@@ -64,6 +77,7 @@ var banner = (function () {
         }, 300, function () {
             $lis.eq(n).siblings().hide();
         })
+        autoFocus();
     }
 
     function autoMove() {
@@ -76,29 +90,51 @@ var banner = (function () {
         $tips.eq(n).addClass('current').siblings().removeClass('current');
     }
 
-    function eventBined() {
+    function eventBind() {
         $box.on('mouseenter', function () {
-            clearInterval(timer)
+            clearInterval(timer);
         })
-        $box.on('mouseenter', function () {
+        $box.on('mouseleave', function () {
             autoMove();
         })
-        $leftBtn.on('click', function () {
+        $leftBtn.on('click', throttle(function () {
             n--;
             if (n < 0) {
                 n = $lis.length - 1;
             }
-        })
-        $rightBtn.on('click', function () {
+
+            n--;
+            move();
+        }))
+        $rightBtn.on('click', throttle(function () {
+            move();
+        }))
+        $tips.on('click', function () {
+            let index = $(this).index();
+            n = index;
+
+            n--;
             move();
         })
     }
     return {
-        init(id) {
-            idSelector = id;
+        init() {
+            idSelector = '#' + this.attr('id');
             getData();
             initEle();
         }
     }
 })()
-banner.init('#box');
+// banner.init('#box');
+$.extend({
+    qqq() {
+        consolelog(666)
+    }
+})
+$.fn.extend({
+    aaa() {
+        console.log(999)
+    },
+    bannerInit: banner.init
+})
+$('#box').bannerInit()
