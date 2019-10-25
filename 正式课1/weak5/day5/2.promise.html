@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    [].forEach(function (item, index) {
+
+    })
+    // pending等待状态    resolved  成功状态   rejected 失败状态
+    //一经改变 状态就不会在发生任何改变
+    let p = new Promise(function (resolve, reject) {
+        // executor 函数
+        /*    console.log(resolve, reject)
+           resolve(234);//同步把状态变成了    resolve;
+           console.log(qqq);
+           reject(666);
+           console.log(999) */
+        setTimeout(() => {
+            console.log(999)
+        })
+    });
+    p.then(function (data) {
+        // resolve
+        console.log(data)
+    }, function (err) {
+        // reject
+        console.log(err);
+    }).catch((err) => {
+        console.log('catch', err)
+    });
+
+    ///Promise.all([p1,p2,p3]).then(()=>{},()=>{})
+    // Promise.race([p1,p2,p3]).then((data)=>{},()=>{})
+    Promise.reject('执行失败').then(() => { }, () => { })//手东创造一个失败状态
+    Promise.resolve('执行失败').then(() = {})//手动创造一个成功状态
+
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 400px;
+            height: 400px;
+            padding: 20px;
+            border: 10px solid rgba(0, 0, 0, 0.5);
+            background: url('../../weak5/day3/img/1.jpg');
+            background-size: 100% 100%;
+            transition: height 1s 2s ease, opacity 4s 1s ease-in-out, width 1s ease-in;
+        }
+
+        #box:hover h1 {
+            font-size: 50px;
+            text-align: center;
+            text-shadow: 1px 1px 1px red;
+            color: rgb(233, 241, 231);
+            -webkit-text-stroke: 2px blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <h1>我爱你</h1>
+</body>
+
+</html>
+<script>
+    let box = document.getElementById('box');
+    box.addEventListener('transitionend', function () {
+        console.log(666)
+    }, false);
+    box.addEventListener('webkitTransitionEnd', function () {
+
+    }, false)
+</script>
