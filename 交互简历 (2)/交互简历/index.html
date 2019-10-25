@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<script>
+     let w = document.documentElement.clientWidth || document.body.clientWidth;
+        document.documentElement.style.fontSize = w * 100 / 750 + 'px';
+        window.onresize = function () {
+            let w = document.documentElement.clientWidth || document.body.clientWidth;
+            document.documentElement.style.fontSize = w * 100 / 750 + 'px';
+        }
+</script>
+<body>
+    <section class="loadingBox hide">
+        <h1>珠峰培训</h1>
+        <h2>H5场景的交互简历</h2>
+        <div class="progressBox">
+                <div class="progress"></div>
+        </div>
+    </section>
+    <section class="phoneBox hide">
+        <header>
+            <h1>珠峰培训</h1>
+            <h2>www.zhufengpeixun.com</h2>
+            <h3 class="hide">00:00</h3>
+        </header>
+        <footer>
+           <div class="circle"></div>
+        </footer>
+        <div class="overBox bot">
+            <div class="overBtn"></div>
+        </div>
+    </section>
+    <section class="chatBox">
+        <ul class="chatMsgBox">
+            <li class="opa">
+                <div class="imgBox">
+                    <img src="./images/message-head1.png" alt="">
+                </div>
+                <div class="msg">
+                    面试官你好，我是练习时长两年半的偶像练习生蔡徐坤！
+                </div>
+            </li>
+            <li class="right opa">
+                <div class="imgBox">
+                    <img src="./images/message-head2.png" alt="">
+                </div>
+                <div class="msg">
+                    哇塞！好牛X啊！介绍一下自己的专业技能吧！
+                </div>
+            </li>
+            <li class="opa">
+                <div class="imgBox">
+                    <img src="./images/message-head1.png" alt="">
+                </div>
+                <div class="msg">
+                    我喜欢唱跳rap篮球，爱吃烤山药
+                </div>
+            </li>
+            <li class="right opa">
+                <div class="imgBox">
+                    <img src="./images/message-head2.png" alt="">
+                </div>
+                <div class="msg">
+                    吃两块，吃大块的
+                </div>
+            </li>
+            <li class="opa">
+                <div class="imgBox">
+                    <img src="./images/message-head1.png" alt="">
+                </div>
+                <div class="msg">
+                    接下来请欣赏我的表演，离不开你
+                </div>
+            </li>
+            <li class="right opa">
+                <div class="imgBox">
+                    <img src="./images/message-head2.png" alt="">
+                </div>
+                <div class="msg">
+                    停停停，跟我唱，掀起~波澜
+                </div>
+            </li>
+            <li class="opa">
+                <div class="imgBox">
+                    <img src="./images/message-head1.png" alt="">
+                </div>
+                <div class="msg">
+                    掀起~波~澜
+                </div>
+            </li>
+            <li class="right opa">
+                <div class="imgBox">
+                    <img src="./images/message-head2.png" alt="">
+                </div>
+                <div class="msg">
+                    滚
+                </div>
+            </li>
+        </ul>
+        <div class="keyboard bot">
+            <p></p>
+            <div class="chatBtn hide"></div>
+        </div>
+    </section>
+</body>
+</html>
+<script src="./js/index.js"></script>
