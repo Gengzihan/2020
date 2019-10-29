@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* #box {
+            width: 200px;
+            height: 200px;
+            background: rgb(0, 174, 255);
+            transform: skew(45deg);
+            animation: ;
+        } */
+
+        /* @keyframes qqq {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate((360deg));
+            }
+        }
+
+        #box {
+            margin: auto;
+            width: 400px;
+            perspective: 200px;
+        }
+
+        ul {
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        li {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 0;
+            top: 0;
+            background: rgb(0, 174, 255);
+        }
+
+        li:nth-child(2) {
+            transform: rotate(90deg);
+            transform-origin: top;
+        }
+
+        li:nth-child(3) {
+            transform: rotateX(90deg);
+            transform-origin: top;
+        }
+
+        li:nth-child(4) {
+            transform: rotateY(90deg);
+            transform-origin: left;
+        }
+
+        li:nth-child(5) {
+            transform: rotateY(90deg);
+            transform-origin: right;
+        }
+
+        li:nth-child(6) {
+            transform: rotateY(90deg);
+            transform-origin: right;
+        }
+        */
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <!-- 
+        css3  transition animation    (@keyframs)
+        transform  translate  rotate skew  scale 
+        perspective ：200px  
+        
+    H5 header  footer  main  nav section   article...
+       input  做了增强   color date
+
+     -->
+    <input type="text" id="inp">
+    <ul id="list" style="display: none;">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>
+<script>
+    inp.onfocus = function (e) {
+        e.preventDefault();
+        list.style.dispaly = 'block';
+        this.value = ' ';
+    }
+    inp.onblur = function () {
+        list.style.dispaly = 'none'
+    }
+    list.onclick = function (e) {
+        if (e.target.nodeName.toLowerCase() == 'li') {
+            inp.value = e.target.innerText;
+        }
+    }
+</script>
