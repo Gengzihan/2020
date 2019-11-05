@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    fetch('./data.json').then(()=>{
+        //不管是 200 还是 4xx 5xx 都会走成功的回调
+        console.log(response)
+        console.log(response.json())
+        console.log(response.json())
+    },()=>{
+
+    }).then((data)=>{
+        console.log('data',data)
+    }).then((err)=>{
+        console.log('err',err)
+    });
+
+
+    fetch ('./data.json',{
+        method:'post',
+        headers:{},
+        credentials:'same-origin',//include  omit
+        body:{a:123,b:234}
+    }).then((response=>response.json()).then((data)=>{
+        console.log(data)
+    }) )
+</script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function MyPromise(exector) {
+        let self = this;
+        self.value = undefined;// 存储成功状态下的值
+        self.reason = undefined;// 存储失败状态下的原因
+        self.status = 'pending';// 存储promise的状态
+        self.resCallback = [];// 存储成功的回调函数
+        self.rejCallback = [];// 存储失败的回调函数
+        function resolve(value) {
+            if (self.status === 'pending') {
+                self.status = 'resolved'
+                self.value = value;
+                self.resCallback.forEach(item => {
+                    item && item(self.value)
+                })
+            }
+        }
+        function reject(reason) {
+            if (self.status === 'pending') {
+                self.status = 'rejected'
+                self.reason = reason;
+                self.rejCallback.forEach(item => {
+                    item && item(self.reason);
+                })
+            }
+        }
+        try {
+            exector(resolve, reject)
+        } catch (error) {
+            reject(error)
+        }
+    }
+    MyPromise.prototype.then = function (res, rej) {
+        let self = this;
+        if (self.status === 'resolved') {
+            res(self.value)
+        }
+        if (self.status === 'rejected') {
+            rej(self.reason)
+        }
+        if (self.status === 'pending') {
+            self.resCallback.push(res);
+            self.rejCallback.push(rej);
+        }
+    }
+
+
+    let myp = new MyPromise(function (resolve, reject) {
+        console.log('fn')
+        console.log(qqq)
+        setTimeout(() => {
+            resolve(666)
+        }, 3000);
+    }).then((data) => {
+        console.log('then2data', data)
+    }, (err) => {
+        console.log('then2err', err)
+    })
+
+</script>

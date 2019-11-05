@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+  /*   axios.get(url, { params: { a: 12, b: 14 } })
+    axios.post(url, { a: 12, b: 23 })
+    axios({
+        method: 'get',
+        data: {},//post
+        params: {},//get
+    }) */
+
+    axios.defaults.baseURL = 'http:baidu.com/qqq';
+    axios.get('/user')
+    axios.get('https:163.com/user')
+</script>

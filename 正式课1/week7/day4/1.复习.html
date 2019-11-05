@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // onabord  ontimeout 
+    // setRequsetHeader() //参数不能是中文  content-type  x-www
+    // getRequstHeader()
+    // send(post请求体，只能是字符串)
+    // 
+
+    /*
+    ajax({
+        method:
+        data:{}
+        url:
+        cache
+        async
+        headers:{}
+        success
+        error
+    })
+    */
+
+    /*
+    全局配置：
+    axios.defaults.baseURL = '';
+
+
+    axios.get(url,{params:{a:12,b:13}})
+    axios.post(url,{a:12,b:13})
+    axios({
+        method:,
+        params:{},
+        data:{},
+        headers:{},
+    })
+
+    let http  = axios.create({
+        headers:{},
+        baseUPL:
+        requestTransform(){
+
+        }
+    })
+    */
+    let p1 = new Promise(function (res, rej) {
+        setTimeout(() => {
+            res(666);
+            console.log('3s')
+        }, 3000);
+    })
+    async function qqq() {
+        console.log(111)
+        let p = await p1;
+        console.log(p)
+    }
+    qqq();
+</script>
