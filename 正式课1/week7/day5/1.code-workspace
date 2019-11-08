@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "2019-09",
+			"path": "C:\\Users\\Administrator\\Documents\\2019-09"
+		},
+		{
+			"name": "后台系统",
+			"path": "C:\\Users\\Administrator\\Desktop\\后台系统"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "后台系统"
+	}
+}
