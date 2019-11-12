@@ -14,6 +14,8 @@ let server = http.createServer((req, res) => {
     res
     //list get
     //add  post
+    //跨域设置cookie  跨域的源域不能是*   响应头需要有 creadentials属性
+    //前段允许跨域携带cookie
     switch (pathname) {
         case '/list':
             if (method.toLowerCase() !== 'post') {
