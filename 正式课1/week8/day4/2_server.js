@@ -3,7 +3,8 @@ let {
     readFile,
     writeFile
 } = require('./promiseFs');
-let bodyParser = require('body-parser')
+// let bodyParser = require('body-parser')
+let qs = require('qs');
 let app = express();
 app.listen(8080, function () {
     console.log('服务起于 8080端口')
@@ -22,13 +23,34 @@ app.use((req, res, next) => {
 })
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', "http://localhost:8000");
-    res.header('Access-Control-Allow-')
+    res.header('Access-Control-Allow-Credentials', true);
     next();
 })
+/* // app.use(bodyParser.json())
+app.use(bodyParser.raw())
+app.use(bodyParser.text())
 app.use(bodyParser.urlencoded({
     extended: true
+})) */
+app.use((req, res, next) => {
+    req.on('data', (chunk) => {
+        str += chunk;
+    })
+    req.on('end', () => {
+        let obj = {};
+        try {
+            obj = JSON.parse(str)
+        } catch (error) {
+            obj = qs.parse(str)
+        }
+        req.body = obj;
+        next();
+    })
+})
+/* app.use(bodyParser.urlencoded({
+    extended: true
 }))
-app.use()
+app.use() */
 app.get('/list', function (req, res) {
     // req.query   前端传给后端的参数
     //type是quert中的属性 使用获取对应的对象的
@@ -42,9 +64,38 @@ app.get('/list', function (req, res) {
         data: type ? data[type] : data //前端给了type 我们就返回对应的属性值  没给就整个对象返回
     })
 })
-app.post('/add', function (req, res) {
-    console.log(req.body)
-    res.send({
-        status: 'waiting'
+let ary = [];
+
+function f(req, res) {
+    readFile('./package-lock.json').then(data => {
+        data = JSON.parse(data);
+        Object.assign(data.dependencies.my, req.body)
+        return writeFile('./package-lock.json', JSON.stringify(data))
+    }).then(data => {
+        res.send({
+            code: 0,
+            data: 'success'
+        })
+        let fn = ary.shift();
+        fn && fn();
+    }).catch(err => {
+        console.log(err)
+        res.send({
+            err: err
+        })
     })
+}
+let timer = null;
+app.post('/add', function (req, res) {
+    console.log(req.body) // 放置是 前端post发给后台的数据
+    ary.push(() => {
+        f(req, res)
+    })
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+        let fn = ary.shift();
+        fn && fn();
+    }, 100);
+
 })
+
