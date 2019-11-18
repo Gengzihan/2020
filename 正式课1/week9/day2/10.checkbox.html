@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+
+        <h2>水果栏目</h2>
+        <input type="checkbox" id="all" v-model='all' @change='fn'> <label for="all">全选</label>
+        <pre>😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀</pre>
+        <!--   <br>
+       --------------------------------------
+        <br> -->
+        <!--  <input type="checkbox" id="apple" value="苹果" v-model='checkList'><label for="apple">苹果</label>
+        <input type="checkbox" id="banana" value="香蕉" v-model='checkList'><label for="banana">香蕉</label>
+        <input type="checkbox" id="pear" value="梨" v-model='checkList'><label for="pear">梨</label>
+        <input type="checkbox" id="orange" value="橘子" v-model='checkList'><label for="orange">橘子</label>
+        <input type="checkbox" id="peach" value="桃子" v-model='checkList'><label for="peach">桃子</label> -->
+        <!-- 多个 checkbox 绑定同一个数组  这时数组中的内容就是选中的 cheakbox的value值 -->
+    
+        <template v-for='v in backAry'>
+                <input type="checkbox" v-bind:id="v" :value="v" v-model='checkList'>
+                <label :for="v">{{v}}</label>
+        </template>
+        <!-- template 是vue内置一个标签  可以避免增加无用标签这种 -->
+    </div>
+</body>
+
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    //v-bind: 专门用来绑定行内属性用的  简写是  : (冒号)
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            name: "珠峰",
+            backAry: ['apple', 'banana', 'pear', 'orange', 'peach'],
+            checkList: [],
+            all: false
+        },
+        methods: {
+            fn() {
+                console.log(this.all)
+                if (this.all) {
+                    this.checkList = [1, 2, 3, 4, 5, 6]
+                } else {
+                    this.checkList = [];
+                }
+            }
+        },
+    })
+</script>
