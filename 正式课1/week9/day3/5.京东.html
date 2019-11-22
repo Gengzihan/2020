@@ -25,7 +25,7 @@
             position: fixed;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(34, 218, 10, 0.5);
         }
 
         .mask .panel {
@@ -76,7 +76,7 @@
                     </tr>
                     <tr>
                         <td colspan="8" style="text-align: right;">
-                            <button type="button" class="btn btn-danger" @click='clear'>清空购物车</button>
+                            <button type="button" class="btn btn-danger" @click='del(index)'>清空购物车</button>
                         </td>
                     </tr>
                 </tbody>
@@ -87,11 +87,11 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">警告</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style='text-align:center'>
                     <h2> 是否删除</h2>
                 </div>
-                <div class="  btnBox text-right">
-                    <button class="btn btn-danger" @click = 'cancel'>取消</button>
+                <div class="btnBox text-right" style="text-align:center">
+                    <button class="btn btn-danger" @click='cancel'>取消</button>
                     <button class="btn btn-primary" @click='sure'>确定</button>
                 </div>
             </div>
