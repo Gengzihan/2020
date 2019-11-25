@@ -23,4 +23,26 @@
     }
     var ary = myNew(Array, 10, 20);
     console.log(ary);
+
+    function myNew(classN,...arg){
+        var obj = new Object();
+        obj.__proto__ = classN.prototype;
+        var res = classN.call(obj,...arg);
+        return typeof res === 'onject' ? res : obj;
+    }
+    var ary = myNew(Array,10,20);
+    console.log(ary)
+
+    function myNew(classN,...arg){
+        var obj = new Object();
+        obj.__proto__= classN.prototype;
+        var res = classN.call(obj,...arg);
+        return typeof res === 'object' ? res : obj;
+    }
+    var ary = myNew(Array,10,20)
+    console.log(ary)
+
+    function myNew(classN,...arg){
+        var
+    }
 </script>
