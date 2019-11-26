@@ -25,7 +25,7 @@
     // every  只要有一个回调函数返回值是false 结果就是false  后边回调不在执行
     //
     let res = ary.reduce(function (prev, next) {
-        //prev 若第一次执行回调函数时 prev是reduce第二个参数 若不存在第二个参数 则prev九十数组的第一项
+        //prev 若第一次执行回调函数时 prev是reduce第二个参数 若不存在第二个参数 则prev就是数组的第一项
         //在后边的回调 prev就是上一个回调的返回值 next就是当前项
         //reduce的执行结果 就是最后的一个回调函数的返回值
         console.log(arguments);

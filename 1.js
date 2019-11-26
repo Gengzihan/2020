@@ -1,60 +1,57 @@
-Vue.filter('money', function (val) {
-    return '￥' + (val / 100).toFixed(2)
+Vue.directives('focus', function (el, obj) {
+    if (obj.value) {
+        setTimeout(() => {
+            el.focus()
+        }, 10);
+    }
 })
-new Vue({
+let vm = new Vue({
     el: '#app',
     data: {
-        name: '珠峰',
-        datalist: [],
-        total: 0,
-        checkAll: true,
-        show: false
+        ary: [],
+        todo: '',
+        count: 0,
+        hash: '',
+    },
+    computed: {
+        todaAry() {
+            this.count = this.ary.filter(item => !item.done).length;
+            localStorage.setItem('mytodolist', JSON.stringify(this.ary))
+
+            switch (this.hash) {
+                case '#/all':
+                    return this.ary
+                    break;
+                case '#/finished':
+                    return this.ary.filter(item => item.done)
+                    break;
+                case '#/undefined':
+                    return this.ary.filter(item => !item.done)
+                    break
+                default:
+                    break;
+            }
+        }
     },
     created() {
-        this.getData();
+        this.hash = location.hash || '#/all';
+        window.addEventListener('hashchange', () => {
+            this.hash = location.hash;
+        });
+        this.ary = JSON.parse(localStorage.getItem('mytodolist')) || [];
     },
     methods: {
-        getData() {
-            fetch('./data.json').then((res) => {
-                return res.json()
-            }).then(data => {
-                console.log(data)
-                this.datalist = data;
-                this.sum();
-                this.checkAll = this.datalist.every(item => item.isSelect)
-            }).catch((err) => {
-                console.log(err)
-            })
-        },
-        sum() {
-            this.total = this.datalist.filter(item => item.isSelect).reduce((prev, next) => prev + next.count * next.price, 0)
-        },
-        checkOneFn() {
-            this.checkAll = this.datalist.every(item => item.isSelect);
-            sum();
-        },
-        checkAllFn(){
-            this.datalist.forEach(item => {
-                item.isSelect = this.checkAll
-            });
-            this.sum();
-        },
-        del(n){
-            this.delIndex = n;
-            this.show = true
-        },
-        cancel(){
-            this.show = false
-        },
-        sure(n){
-            this.datalist.splice(this.delIndex,1);
-            this.sum();
-            this.show = false
-        },
-        clear(){
-            this.datalist = [];
-            this.sum();
-            this.checkAll= false
+        submit(){
+            this.todo = this.todo.trim();
+            if(!this.todo) return;
+            let obj = {
+                id:Math.random(),
+                done:false,
+                todo:this.todo,
+                editable:false
+            }
+            this.ary.unshift(obj);
+            this.todo ='';
         }
     },
 })
