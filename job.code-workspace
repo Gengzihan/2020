@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "C:\\Users\\Administrator\\Documents\\2019-09"
+		},
+		{
+			"path": "C:\\Users\\Administrator\\Desktop\\zhihu"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "zhihu"
+	}
+}
