@@ -1,7 +1,8 @@
 <template>
-    <div>
-        植物管理
-    </div>
+    <el-container>
+        <el-aside width="200px">CRM====Aside</el-aside>
+        <el-main>CRM====Main</el-main>
+    </el-container>
 </template>
 <script>
 // @ is an alias to /src
