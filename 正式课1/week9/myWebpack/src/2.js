@@ -1,0 +1,8 @@
+let obj =require('./1')
+
+console.log('这是2.js文件',obj);
+
+model.exports ={
+    qqq:1,
+    aaa:2
+}
