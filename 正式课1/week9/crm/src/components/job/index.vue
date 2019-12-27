@@ -1,22 +1,24 @@
 <template>
   <el-table :data="tableData" style="width: 100%" stripe border height="100%">
-    <el-table-column label="编号" type="index" width="100" align="center" :index="indexMethod"></el-table-column>
-    <el-table-column label="名称" width="180" align="center">
-      <template slot-scope="scope">
-        <!-- <i class="el-icon-time"></i> -->
-        <span style="margin-left: 10px">{{ scope.row.name }}</span>
-      </template>
-    </el-table-column>
-    <el-table-column label="描述" align="center">
+    <el-table-column label="编号" width="180" align="center" type="index" :index="indexMethod"></el-table-column>
+
+    <el-table-column prop="name" label="职务" width="120" align="center"></el-table-column>
+
+    <el-table-column prop="desc" label="描述" align="center" width="200">
       <template slot-scope="scope">
         <el-popover trigger="hover" placement="top">
           <p>描述: {{ scope.row.desc }}</p>
-          <div slot="reference" class="name-wrapper">{{ scope.row.desc }}</div>
+          <div slot="reference" class="name-wrapper">
+            <!-- <el-tag size="medium">{{ scope.row.desc }}</el-tag> -->
+            {{ scope.row.desc }}
+          </div>
         </el-popover>
       </template>
     </el-table-column>
 
-    <el-table-column></el-table-column>
+    <el-table-column label="权限" align="center">
+      <template slot-scope="scope">{{scope.row.power|trans}}</template>
+    </el-table-column>
 
     <el-table-column label="操作" width="200" align="center">
       <template slot-scope="scope">
@@ -27,27 +29,27 @@
   </el-table>
 </template>
 <script>
-import { delDpList } from "@/api/index.js";
+// @ is an alias to c
+import { delJobList } from "@/api/index.js";
 export default {
   data() {
     return {};
   },
   created() {
-    this.$store.dispatch("changeDpList");
+    this.$store.dispatch("changeJobList");
   },
   computed: {
     tableData() {
-      return this.$store.state.departmentList;
+      return this.$store.state.jobList;
     }
   },
+  components: {},
   methods: {
     handleEdit(index, row) {
       console.log(index, row);
       // this.$router.push('/org/addDepartment')
-      this.$router.push({
-        path: "/org/addDepartment",
-        query: { id: row.id }
-      });
+      //跳转时  要带上id  根据id 那数据
+      this.$router.push({ path: "/org/addJob", query: { id: row.id } });
     },
     handleDelete(index, row) {
       this.$confirm("此操作将永久删除该数据, 是否继续?", "提示", {
@@ -56,19 +58,18 @@ export default {
         type: "warning"
       })
         .then(() => {
-          // 点击了确定按钮
-          // 调用 api中的  delDpList 方法
-          delDpList(row.id).then(data => {
+          //点击确定按钮
+          //调用api中的delDpList方法
+          delJobList(row.id).then(data => {
             if (data.code == 0) {
               this.$message({
                 type: "success",
                 message: "删除成功!"
               });
-              // 后台删除
-              this.$store.dispatch("changeDpList");
-
-              // 前端删除
-              // let newData = this.tableData.filter(item=>{
+              //后台删除
+              this.$store.dispatch("changeJobList");
+              //前台删除
+              //let newData = this.tableData.filter(item=>{
               //   item.id != row.id
               // })
               // this.$store.commit('changeDpList',{data:newData})
@@ -93,3 +94,5 @@ export default {
   }
 };
 </script>
+<style lang="less">
+</style>

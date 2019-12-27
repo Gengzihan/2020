@@ -1,7 +1,9 @@
 <template>
   <el-container>
     <el-aside width="200px">CRM====Aside</el-aside>
-    <el-main>CRM====Main</el-main>
+    <el-main>
+      <router-view></router-view>
+    </el-main>
   </el-container>
 </template>
 <script>

@@ -10,7 +10,7 @@ const http = axios.create({
         console.log(data)
         // lodash
         let str = '';
-        for(let k in data){
+        for (let k in data) {
             str += `${k}=${data[k]}&`
         }
         return str;

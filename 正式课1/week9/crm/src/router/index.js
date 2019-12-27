@@ -7,24 +7,22 @@ import crm from './customer'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'index',
     component: Index,
-    redirect:'/org',
-    children:[
-      {
-        path:'/org',
-        name:'org',
-        component:()=>import('../views/org.vue'),
-        children:org
+    redirect: '/org',
+    children: [{
+        path: '/org',
+        name: 'org',
+        component: () => import('../views/org.vue'),
+        children: org
       },
       {
-        path:'/crm',
-        name:'crm',
-        component:()=>import('../views/crm.vue'),
-        children:crm
+        path: '/crm',
+        name: 'crm',
+        component: () => import('../views/crm.vue'),
+        children: crm
       }
     ]
   },
@@ -34,15 +32,15 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "login" */ '../views/login.vue')
+    component: () => import( /* webpackChunkName: "login" */ '../views/login.vue')
   },
   {
-    path:'/test',
-    component:() => import('../views/test/test.vue')
+    path: '/test',
+    component: () => import('../views/test/test.vue')
   },
   {
-    path:'*',// 走到不存在的路径时 重新跳转到首页
-    redirect:'/'
+    path: '*', // 走到不存在的路径时 重新跳转到首页
+    redirect: '/'
   }
 ]
 

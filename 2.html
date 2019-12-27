@@ -6,40 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        ul li {
-            height: 50px;
-            border: 1px solid #ccc;
-            margin: 5px 0;
-        }
-    </style>
 </head>
 
 <body>
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+
 </body>
 
 </html>
 <script>
-    var oLis = document.getElementsByTagName('li');//oLis  是一个元素集合
-    console.log(oLis)
-    for (var i = 0; i < 7; i++) {
-        console.log(i % 2)
-        oLis[i].style.background = i % 2 == 0 ? 'blue' : 'red'
-    }
+    //防抖函数
+    const debounce = (fn, delay) => {
+        let timer = null;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                fn.apply(this, args);
+            }, delay);
+        };
+    };
 
-    var oLis = document.getElementsByTagName('li');
-    console.log(oLis)
-    for (var i = 0; i < 7; i++) {
-        console.log(i % 2)
-        oLis[i].style.background = i % 2 == 0 ? 'blue' : 'red'
+
+    //节流函数
+    const throttle = (fn, delay = 500) => {
+        let flag = true;
+        return (...args) => {
+            if (!flag) return;
+            flag = false;
+            setTimeout(() => {
+                fn.apply(this, args);
+                flag = true;
+            }, delay);
+        };
+    };
+
+
+    //手写mynew
+    function myNew(classN, ...arg) {
+        var obj = new Object();
+        obj.__proto__ = classN.prototype;
+        var res = classN.call(obj, ...arg);
+        return typeof res === 'object' ? res : obj;
+    }
+    var ary = myNew(Array, 10, 20);
+    console.log(ary);
+
+
+    function myNew(classN, ...arg) {
+        var obj = new Object();
+        obj.__proto__ = classN.prototype;
+        var res = classN.call(obj, ...arg);
+        return typeof res === 'object' ? res : obj;
+    }
+    var ary = myNew(Array, 10, 20);
+    console.log(ary)
+
+
+    function myNew(classN, ...arg) {
+        var obj = new Object();
+        obj.__proto__ = classN.prototype;
+        var res = classN.call(obj, ...arg);
+        return typeof res === 'object' ? res : obj;
+    }
+    var ary = myNew(Array, 10, 20);
+    console.log(ary)
+
+    function myNew(classN, ...args) {
+        var obj = new Object;
+        obj.__proto__ = classN.prototype;
+        var res = classN.call(obj, ...arg);
+        return typeof res === 'object' ? res : obj;
+    }
+    var ary = myNew(Array, 10, 20);
+    console.log(ary)
+
+    function myNew(classN, ...args) {
+        var obj = new Object;
+        obj.__proto__ = classN.prototype;
+        var res = classN.call(obj, ...arg);
+        return typeof res === 'object' ? res : obj;
+    }
+    var ary = myNew(Array, 10, 20);
+    console.log(ary);
+
+    function myNew(classN, ...args) {
+        var obj = new Object;
+        obj.__proto__ = classN.prototype;
+        var res = classN.call(obj, ...arg);
+        return typeof res === 'object' ? res : obj;
+    }
+    var ary = myNew(Array, 10, 20);
+    console.log(ary);
+
+    function myNew(classN,...args){
+        
     }
 </script>

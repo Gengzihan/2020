@@ -12,9 +12,13 @@ export function login(option) {
                 confirmButtonText: '确定'
             });
         }
-        if(data.code == 0){
-            localStorage.setItem('power',data.power)
+        if (data.code == 0) {
+            localStorage.setItem('power', data.power)
         }
         return data //给后边then的参数
     })
+}
+
+export function signout() {
+    return http.get('/user/signout')
 }

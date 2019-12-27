@@ -1,19 +1,19 @@
 <template>
-  <el-form ref="form" :model="form" :rules="rules" label-width="80px" class='myform'>
+  <el-form ref="form" :model="form" :rules="rules" label-width="80px" class="myform">
     <el-form-item label="部门名称" prop="name">
       <el-input v-model.trim="form.name" style="width:400px"></el-input>
     </el-form-item>
-    <el-form-item label="部门描述" prop='desc'>
-      <el-input type="textarea" rows='8' v-model.trim="form.desc" style="width:400px"></el-input>
+    <el-form-item label="部门描述" prop="desc">
+      <el-input type="textarea" rows="8" v-model.trim="form.desc" style="width:400px"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">立即创建</el-button>
-      <el-button @click='$router.back()'>取消</el-button>
+      <el-button @click="$router.back()">取消</el-button>
     </el-form-item>
   </el-form>
 </template>
 <script>
-import { addDpList,updateDpList } from "@/api/index.js";
+import { addDpList, updateDpList } from "@/api/index.js";
 export default {
   data() {
     return {
@@ -29,7 +29,7 @@ export default {
   },
   created() {
     let id = this.$route.query.id;
-    let obj = this.$store.state.departmentList.filter(item=>item.id == id)[0];
+    let obj = this.$store.state.departmentList.filter(item => item.id == id)[0];
     console.log(obj);
     this.form = obj ? obj : this.form;
   },
@@ -41,11 +41,11 @@ export default {
         console.log(flag);
         if (flag) {
           let id = this.$route.query.id;
-          this.form.departmentId = id;// 后台要这个参数
+          this.form.departmentId = id; // 后台要这个参数
           (id ? updateDpList : addDpList)(this.form).then(data => {
             if (data.code == 0) {
               // 新增成功
-              this.$confirm((id ? '更新' : '添加')+"成功！", "提示", {
+              this.$confirm((id ? "更新" : "添加") + "成功！", "提示", {
                 confirmButtonText: "确定",
                 cancelButtonText: "取消",
                 type: "success"

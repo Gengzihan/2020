@@ -16,21 +16,18 @@
       <el-input v-model="form.phone"></el-input>
     </el-form-item>
     <el-form-item label="部门">
-      <el-select v-model="form.region" placeholder="请选择活动区域">
+      <el-select v-model="form.departmentId" placeholder="请选择活动区域">
         <el-option
           v-for="item  in departmentList"
           :label="item.name"
-          :key=" item.id"
+          :key="item.id"
           :value="item.id/1"
         ></el-option>
-
-        <el-option label="区域二" value="beijing"></el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="职务">
       <el-select v-model="form.jobId" placeholder="请选择活动区域">
-        <el-option v-for="item in jobList" :label="item.name" :value="item.id" :key="item.id"></el-option>
-        <el-option label="区域二" value="beijing"></el-option>
+        <el-option v-for="item in jobList" :label="item.name" :key="item.id" :value="item.id/1"></el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="自我介绍">
@@ -53,32 +50,31 @@ export default {
         sex: "",
         email: "",
         phone: "",
-        departmentId: "",
-        jobId: 2,
+        departmentId: 1,
+        jobId: 1,
         desc: ""
       }
     };
   },
   computed: {
-    /* departmentList() {
-      return this.$store.state.departmentList;
-    },
-    JobList() {
-      return this.$store.state.JobList;
-    }
-   */
-    ...mapState(["departmentList", " JobList", "userList"])
+    // departmentList(){
+    //   return this.$store.state.departmentList;
+    // },
+    // jobList(){
+    //   return this.$store.state.jobList;
+    // }
+    ...mapState(["departmentList", "jobList", "userList"])
   },
   created() {
     this.$store.dispatch("changeJobList");
-    //在这调用action中的方法 该方法调用的接口 获取数据 成功后调用
-    //mutations中的对应方法 然后把state中的数据修改
-    //state中的数据修改之后 触发当前组件的试图更新
-    let obj = this.userList.filter(item => item.id == this.$route.query.id);
+    // 在这调用action中的方法 该方法调用接口 获取数据 成功后调用
+    // mutations中的对应方法  然后吧state中的数据修改
+    // state中的数据修改之后 触发当前组件的视图更新
+    let obj = this.userList.filter(item => item.id == this.$route.query.id)[0];
     console.log(obj);
     this.form = obj || this.form;
     this.form.departmentId *= 1;
-    this.form.jobId *= 1; //把两个ID统一成数字
+    this.form.jobId *= 1; // 把两个ID统一成数字
   },
   methods: {
     onSubmit() {
